@@ -31,6 +31,7 @@ atlassian-ide-plugin.xml
 
 /log
 /data
+/odoosoft
 odoo.conf
 odoo_debug.conf
 .openerp_serverrc
