@@ -11,6 +11,8 @@ Xiao Sale Update Module""",
     'website': 'http://odoosoft.com',
     'depends': ['base', 'sale'],
     'data': [
+        'security/ir.model.access.csv',
+
         'views/limit_level_view.xml',
         'views/partner_view.xml',
         'views/menuitem.xml',

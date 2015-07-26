@@ -30,7 +30,7 @@ class ResPartner(models.Model):
     sale_limit = fields.Many2one('xiao.partner.limit.level', 'Sale Limit', default=lambda self: self._default_sale_limit())
     credit_left = fields.Float('Credit Left', digits=(10, 2), compute='_compute_credit_count')
     # override default
-    # credit_limit = fields.Float('Credit Limit', compute='_compute_credit_count')
+    credit_limit = fields.Float('Credit Limit', compute='_compute_credit_count')
 
     def _default_sale_limit(self):
         default_value = self.env['xiao.partner.limit.level'].search([('is_default', '=', True)])
