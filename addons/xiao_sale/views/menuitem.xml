@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="action_xiao_partner_limit_level" model="ir.actions.act_window">
+            <field name="name">信用等级</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">xiao.partner.limit.level</field>
+            <field name="view_mode">tree</field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="menuitem" name="信用等级" parent="base.menu_base_config" action="action_xiao_partner_limit_level" sequence="80"/>
+    </data>
+</openerp>

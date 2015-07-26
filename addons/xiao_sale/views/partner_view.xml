@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_res_partner_limit_inherit_form" model="ir.ui.view">
+            <field name="name">view.res.partner.limit.inherit.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//div[@name='buttons']" position="inside">
+                    <button name="button_credit_left_list" type="object" class="oe_stat_button" icon="fa-list">
+                        <field name="credit_left" widget="statinfo"/>
+                    </button>
+                </xpath>
+                <field name="credit_limit" position="replace">
+                    <field name="sale_limit"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>
