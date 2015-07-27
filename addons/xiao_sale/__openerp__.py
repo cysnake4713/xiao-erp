@@ -13,6 +13,7 @@ Xiao Sale Update Module""",
     'data': [
         'security/ir.model.access.csv',
 
+        'views/product_template_view.xml',
         'views/limit_level_view.xml',
         'views/partner_view.xml',
         'views/menuitem.xml',
