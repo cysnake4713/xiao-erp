@@ -9,7 +9,7 @@
 Xiao Invoice Update""",
     'author': 'Matt Cai',
     'website': 'http://odoosoft.com',
-    'depends': ['base', 'sale'],
+    'depends': ['base', 'sale', 'account'],
     'data': [
         'views/order_view.xml',
         'views/invoice_view.xml',

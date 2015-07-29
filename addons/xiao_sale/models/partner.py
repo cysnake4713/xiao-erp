@@ -27,17 +27,17 @@ class LimitLevel(models.Model):
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    sale_limit = fields.Many2one('xiao.partner.limit.level', 'Sale Limit', default=lambda self: self._default_sale_limit())
-    credit_left = fields.Float('Credit Left', digits=(10, 2), compute='_compute_credit_count')
-    # override default
-    credit_limit = fields.Float('Credit Limit', compute='_compute_credit_count')
-
     def _default_sale_limit(self):
         default_value = self.env['xiao.partner.limit.level'].search([('is_default', '=', True)])
         if default_value:
             return default_value[0]
         else:
-            self.env['xiao.partner.limit.level']
+            return self.env['xiao.partner.limit.level']
+
+    sale_limit = fields.Many2one('xiao.partner.limit.level', 'Sale Limit', default=_default_sale_limit)
+    credit_left = fields.Float('Credit Left', digits=(10, 2), compute='_compute_credit_count')
+    # override default
+    credit_limit = fields.Float('Credit Limit', compute='_compute_credit_count')
 
     @api.multi
     def _compute_credit_count(self):
