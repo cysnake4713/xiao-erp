@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_account_invoice_inherit_form" model="ir.ui.view">
+            <field name="name">view.account.invoice.xiao.form</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@string='Other Info']" position="before">
+                    <page string="待开发票信息">
+                        <group>
+                            <field name="invoice_company_name"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
