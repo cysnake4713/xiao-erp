@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="view_xiao_return_good_tree" model="ir.ui.view">
+            <field name="name">view.xiao.return.good.tree</field>
+            <field name="model">xiao.return.good</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="order"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_xiao_return_good_form" model="ir.ui.view">
+            <field name="name">view.xiao.return.good.form</field>
+            <field name="model">xiao.return.good</field>
+            <field name="arch" type="xml">
+                <form>
+                     <field name="state" widget="statusbar"/>
+                    <sheet>
+                        <group>
+                            <field name="order"/>
+                            <field name="description"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

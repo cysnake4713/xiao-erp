@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="action_return_good_all" model="ir.actions.act_window">
+            <field name="name">退货申请</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">xiao.return.good</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="menuitem_order_return_good" name="退货管理" parent="base.menu_base_partner" sequence="5"/>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="menuitem_order_return_good_all" name="退货申请" parent="menuitem_order_return_good" sequence="5"
+                  action="action_return_good_all"/>
+    </data>
+</openerp>
