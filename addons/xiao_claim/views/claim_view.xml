@@ -23,19 +23,26 @@
                         <field name="state" widget="statusbar" clickable="1"/>
                     </header>
                     <sheet>
-                        <group>
+                        <group string="申诉信息">
                             <group>
                                 <field name="order"/>
                                 <field name="partner_id"/>
+                                <field name="user_id"/>
                             </group>
                             <group>
                                 <field name="carrier_id"/>
                                 <field name="carrier_tracking_ref"/>
                             </group>
                         </group>
-
-                        <group>
-                            <field name="description"/>
+                        <group string="问题描述">
+                            <field name="description" nolabel="1"/>
+                        </group>
+                        <group string="退换货信息">
+                            <field name="new_carrier_id"/>
+                            <field name="new_carrier_tracking_ref"/>
+                        </group>
+                        <group string="处理结果">
+                            <field name="response_description" nolabel="1"/>
                         </group>
                     </sheet>
                 </form>
