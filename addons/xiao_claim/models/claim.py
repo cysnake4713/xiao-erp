@@ -9,7 +9,7 @@ from openerp.tools.translate import _
 
 class Claim(models.Model):
     _name = 'xiao.claim'
-    _rec_name = 'order'
+    _rec_name = 'order_id'
     _description = 'Xiao Claim'
 
     state = fields.Selection([('processing', 'Processing'),
@@ -20,8 +20,8 @@ class Claim(models.Model):
                               ('canceled', 'Canceled'),
                               ], 'State', default='processing')
     user_id = fields.Many2one('res.users', 'Related User')
-    order = fields.Many2one('sale.order', 'Related Order', required=True)
-    partner_id = fields.Many2one('res.partner', 'Partner', related='order.partner_id', readonly=True)
+    order_id = fields.Many2one('sale.order', 'Related Order', required=True, ondelete='cascade')
+    partner_id = fields.Many2one('res.partner', 'Partner', related='order_id.partner_id', readonly=True)
 
     carrier_id = fields.Char('Carrier')
     carrier_tracking_ref = fields.Char('Carrier Tracking Ref')

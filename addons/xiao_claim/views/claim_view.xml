@@ -6,7 +6,7 @@
             <field name="model">xiao.claim</field>
             <field name="arch" type="xml">
                 <tree>
-                    <field name="order"/>
+                    <field name="order_id"/>
                     <field name="carrier_id"/>
                     <field name="carrier_tracking_ref"/>
                     <field name="state" autocolor="1"/>
@@ -25,7 +25,7 @@
                     <sheet>
                         <group string="申诉信息">
                             <group>
-                                <field name="order"/>
+                                <field name="order_id"/>
                                 <field name="partner_id"/>
                                 <field name="user_id"/>
                             </group>
@@ -37,7 +37,7 @@
                         <group string="问题描述">
                             <field name="description" nolabel="1"/>
                         </group>
-                        <group string="退换货信息">
+                        <group string="退换货物流信息">
                             <field name="new_carrier_id"/>
                             <field name="new_carrier_tracking_ref"/>
                         </group>

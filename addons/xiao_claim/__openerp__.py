@@ -13,6 +13,7 @@ Xiao Claim""",
     'data': [
         'views/menuitem.xml',
         'views/claim_view.xml',
+        'views/order_view.xml',
     ],
     'qweb': [
         'static/src/xml/*.xml',
