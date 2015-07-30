@@ -1,0 +1,44 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* xiao_delivery
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-07-30 17:02+0000\n"
+"PO-Revision-Date: 2015-07-30 17:02+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: xiao_delivery
+#: model:ir.model,name:xiao_delivery.model_delivery_grid_line
+msgid "Delivery Grid Line"
+msgstr "送货网络明细"
+
+#. module: xiao_delivery
+#: field:delivery.grid.line,first_price:0
+msgid "First Price"
+msgstr "首重价值"
+
+#. module: xiao_delivery
+#: field:delivery.grid.line,first_value:0
+msgid "First Value"
+msgstr "首重数值"
+
+#. module: xiao_delivery
+#: code:addons/xiao_delivery/models/delivery.py:43
+#, python-format
+msgid "Selected product in the delivery method doesn't fulfill any of the delivery grid(s) criteria."
+msgstr "相关产品没有找到匹配的配送价格."
+
+#. module: xiao_delivery
+#: code:addons/xiao_delivery/models/delivery.py:42
+#, python-format
+msgid "Unable to fetch delivery method!"
+msgstr "没有匹配的配送价格!"
+
