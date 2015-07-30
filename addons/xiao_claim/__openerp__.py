@@ -11,6 +11,8 @@ Xiao Claim""",
     'website': 'http://odoosoft.com',
     'depends': ['base', 'sale'],
     'data': [
+        'security/ir.model.access.csv',
+
         'views/menuitem.xml',
         'views/claim_view.xml',
         'views/order_view.xml',
