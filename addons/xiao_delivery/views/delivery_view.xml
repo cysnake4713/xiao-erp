@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_delivery_grid_line_form" model="ir.ui.view">
+            <field name="name">delivery.grid.line.form.inherit</field>
+            <field name="model">delivery.grid.line</field>
+            <field name="inherit_id" ref="delivery.view_delivery_grid_line_form"/>
+            <field name="arch" type="xml">
+                <field name="list_price" position="before">
+                    <field name="first_price"/>
+                    <field name="first_value"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_delivery_grid_line_tree" model="ir.ui.view">
+            <field name="name">delivery.grid.line.tree.inherit</field>
+            <field name="model">delivery.grid.line</field>
+            <field name="inherit_id" ref="delivery.view_delivery_grid_line_tree"/>
+            <field name="arch" type="xml">
+                <field name="list_price" position="before">
+                    <field name="first_price"/>
+                    <field name="first_value"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>
