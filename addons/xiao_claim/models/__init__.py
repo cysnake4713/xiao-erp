@@ -1,2 +1,2 @@
 # __author__ = cysnake4713@gmail.com
-import return_good
+import claim

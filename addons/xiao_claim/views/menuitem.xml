@@ -5,7 +5,7 @@
         <record id="action_return_good_all" model="ir.actions.act_window">
             <field name="name">退货申请</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">xiao.return.good</field>
+            <field name="res_model">xiao.claim</field>
             <field name="view_mode">tree,form</field>
         </record>
 
