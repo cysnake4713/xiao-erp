@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="group_wechat_pay_log_write" model="res.groups">
+            <field name="name">写入在线支付信息</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="view_xiao_website_pay_log_tree" model="ir.ui.view">
+            <field name="name">view.xiao.website.pay.log.tree</field>
+            <field name="model">xiao.website.pay.log</field>
+            <field name="arch" type="xml">
+                <tree create="false" write="false" delete="false">
+                    <field name="order_id"/>
+                    <field name="price"/>
+                    <field name="name"/>
+                    <field name="pay_datetime"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</openerp>

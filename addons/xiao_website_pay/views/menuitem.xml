@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="action_xiao_website_pay_log" model="ir.actions.act_window">
+            <field name="name">在线付款记录</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">xiao.website.pay.log</field>
+            <field name="view_mode">tree</field>
+        </record>
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="menuitem_xiao_website_pay_manage" name="在线付款记录" parent="account.menu_finance_bank_and_cash" sequence="20"
+                  action="action_xiao_website_pay_log"/>
+    </data>
+</openerp>
