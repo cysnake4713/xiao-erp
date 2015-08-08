@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <template id="xiao_wechat_stock.scan" name="Wechat Stock Scan">
+            <t t-call="odoosoft_wechat_website.layout">
+                <t t-set="footer">
+                    <script>
+                        $('#test').on('click', function(e){
+                            wx.scanQRCode({
+                            desc: 'scanQRCode desc',
+                            needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
+                            scanType: ["qrCode","barCode"], // 可以指定扫二维码还是一维码，默认二者都有
+                            success: function (res) {
+                            $('#result').html = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
+                            }
+                            });
+                        });
+                    </script>
+
+                </t>
+                <div>
+                    测试微信端是否正常
+                    <button id="test">测试扫描</button>
+                    <div id="result">
+
+                    </div>
+                </div>
+            </t>
+
+        </template>
+    </data>
+</openerp>
