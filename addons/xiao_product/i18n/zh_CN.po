@@ -1,0 +1,27 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* xiao_product
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-09 09:23+0000\n"
+"PO-Revision-Date: 2015-08-09 09:23+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: xiao_product
+#: model:ir.model,name:xiao_product.model_product_product
+msgid "Product"
+msgstr "产品"
+
+#. module: xiao_product
+#: field:product.product,retail_price:0
+msgid "Retail Price"
+msgstr "零售价格"
+
