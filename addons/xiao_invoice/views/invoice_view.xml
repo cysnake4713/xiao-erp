@@ -8,10 +8,17 @@
             <field name="inherit_id" ref="account.invoice_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//page[@string='Other Info']" position="before">
-                    <page string="待开发票信息">
+                    <page string="实开发票信息">
                         <group>
                             <field name="invoice_company_name"/>
                         </group>
+                        <field name="real_invoice_ids">
+                            <tree editable="top">
+                                <field name="real_invoice_date"/>
+                                <field name="real_invoice_number"/>
+                                <field name="comment"/>
+                            </tree>
+                        </field>
                     </page>
                 </xpath>
             </field>
