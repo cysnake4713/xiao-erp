@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_account_renumber_inherit_form" model="ir.ui.view">
+            <field name="name">view.account.renumber.inherit.form</field>
+           <field name="model">wizard.renumber</field>
+            <field name="inherit_id" ref="account_renumber.view_account_renumber_form"/>
+            <field name="arch" type="xml">
+                 <field name="number_next" position="after">
+                     <field name="is_draft"/>
+                 </field>
+            </field>
+        </record>
+    </data>
+</openerp>

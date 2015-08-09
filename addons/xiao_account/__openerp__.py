@@ -9,8 +9,9 @@
 Xiao Xiao Account Update""",
     'author': 'Matt Cai',
     'website': 'http://odoosoft.com',
-    'depends': ['base', 'account', 'account_cancel', 'oecn_account_print', 'odoosoft_account'],
+    'depends': ['base', 'account', 'account_cancel', 'oecn_account_print', 'odoosoft_account', 'account_renumber'],
     'data': [
+        'views/renumber_view.xml',
     ],
     'qweb': [
         'static/src/xml/*.xml',
