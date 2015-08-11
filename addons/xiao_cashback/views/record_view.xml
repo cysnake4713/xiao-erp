@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="view_xiao_cash_back_record_tree" model="ir.ui.view">
+            <field name="name">view.xiao.cash.back.record.tree</field>
+            <field name="model">xiao.cash.back.record</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="period_from"/>
+                    <field name="period_to"/>
+                    <field name="is_closed"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_xiao_cash_back_record_form" model="ir.ui.view">
+            <field name="name">view.xiao.cash.back.record.form</field>
+            <field name="model">xiao.cash.back.record</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button string="重新计算返现金额" name="button_regenerate_cash_back_value" type="object" confirm="确定重新生成所有返现金额?"
+                                class="oe_highlight"/>
+                        <button string="重新生成返现记录" name="button_generate_all_record" type="object" confirm="确定重新生成所有返现记录?当前所有记录都会被清除,请谨慎处理."/>
+                    </header>
+                    <sheet>
+                        <group string="返现设置">
+                            <group>
+                                <field name="name"/>
+                                <field name="is_closed"/>
+                            </group>
+                            <group>
+                                <field name="config_id"/>
+                                <field name="period_from"/>
+                                <field name="period_to"/>
+                            </group>
+                        </group>
+                        <group string="返现记录">
+                            <field name="line_ids" nolabel="1">
+                                <tree editable="bottom" colors="grey:is_cash_back == True">
+                                    <field name="partner_id"/>
+                                    <field name="total_paid" readonly="1"/>
+                                    <field name="will_cash_back" readonly="1"/>
+                                    <field name="cash_back_bank" domain="[('partner_id','=',partner_id)]"/>
+                                    <field name="cash_back_date"/>
+                                    <field name="is_cash_back"/>
+                                </tree>
+                            </field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_xiao_cash_back_config_tree" model="ir.ui.view">
+            <field name="name">view.xiao.cash.back.config.tree</field>
+            <field name="model">xiao.cash.back.config</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_xiao_cash_back_config_form" model="ir.ui.view">
+            <field name="name">view.xiao.cash.back.config.form</field>
+            <field name="model">xiao.cash.back.config</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name"/>
+                        <field name="cash_back_rate" widget="percentage"/>
+                    </group>
+                    <group>
+                        <field name="account_ids"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>
