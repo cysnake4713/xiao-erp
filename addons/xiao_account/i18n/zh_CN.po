@@ -1,0 +1,27 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* xiao_account
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-12 04:53+0000\n"
+"PO-Revision-Date: 2015-08-12 04:53+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: xiao_account
+#: model:ir.model,name:xiao_account.model_account_move
+msgid "Account Entry"
+msgstr "会计分录"
+
+#. module: xiao_account
+#: model:ir.model,name:xiao_account.model_wizard_renumber
+msgid "Account renumber wizard"
+msgstr "凭证编号重新编码"
+
