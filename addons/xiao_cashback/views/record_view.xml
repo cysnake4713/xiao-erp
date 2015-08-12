@@ -72,9 +72,6 @@
                         <field name="name"/>
                         <field name="cash_back_rate" widget="percentage"/>
                     </group>
-                    <group>
-                        <field name="account_ids"/>
-                    </group>
                 </form>
             </field>
         </record>

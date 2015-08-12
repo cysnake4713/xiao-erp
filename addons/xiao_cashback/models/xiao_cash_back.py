@@ -80,8 +80,6 @@ class CashBackConfig(models.Model):
 
     name = fields.Char('Name', required=True)
     cash_back_rate = fields.Float('Cash Back Rate')
-    account_ids = fields.Many2many('account.account', 'cash_back_config_account_rel', 'config_id', 'account_id', 'Need compute Accounts',
-                                   domain=[('type', '!=', 'view')])
 
     @api.multi
     def get_cash_back(self, total_value):
