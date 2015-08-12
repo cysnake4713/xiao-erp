@@ -1,0 +1,173 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* xiao_claim
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-12 05:50+0000\n"
+"PO-Revision-Date: 2015-08-12 05:50+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: xiao_claim
+#: selection:xiao.claim,state:0
+msgid "Canceled"
+msgstr "撤销"
+
+#. module: xiao_claim
+#: field:xiao.claim,carrier_id:0
+msgid "Carrier"
+msgstr "物流"
+
+#. module: xiao_claim
+#: field:xiao.claim,carrier_tracking_ref:0
+msgid "Carrier Tracking Ref"
+msgstr "物流单号"
+
+#. module: xiao_claim
+#: field:xiao.claim,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: xiao_claim
+#: field:xiao.claim,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: xiao_claim
+#: field:xiao.claim,description:0
+msgid "Description"
+msgstr "描述"
+
+#. module: xiao_claim
+#: selection:xiao.claim,state:0
+msgid "Finished"
+msgstr "完成"
+
+#. module: xiao_claim
+#: field:xiao.claim,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: xiao_claim
+#: field:xiao.claim,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: xiao_claim
+#: field:xiao.claim,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: xiao_claim
+#: field:xiao.claim,new_carrier_id:0
+msgid "New Carrier"
+msgstr "换货物流"
+
+#. module: xiao_claim
+#: field:xiao.claim,new_carrier_tracking_ref:0
+msgid "New Carrier Tracking Ref"
+msgstr "换货物流单号"
+
+#. module: xiao_claim
+#: selection:xiao.claim,state:0
+msgid "Processing"
+msgstr "处理中"
+
+#. module: xiao_claim
+#: selection:xiao.claim,state:0
+msgid "Rejected"
+msgstr "拒绝"
+
+#. module: xiao_claim
+#: field:sale.order,claim_ids:0
+msgid "Related Claim"
+msgstr "相关退换货"
+
+#. module: xiao_claim
+#: field:xiao.claim,order_id:0
+msgid "Related Order"
+msgstr "相关订单"
+
+#. module: xiao_claim
+#: field:xiao.claim,partner_id:0
+msgid "Partner"
+msgstr "相关客户"
+
+#. module: xiao_claim
+#: field:xiao.claim,user_id:0
+msgid "Related User"
+msgstr "负责人"
+
+#. module: xiao_claim
+#: field:xiao.claim,response_description:0
+msgid "Response Description"
+msgstr "处理结果"
+
+#. module: xiao_claim
+#: field:xiao.claim,returned_products:0
+msgid "Returned Product"
+msgstr "退货产品"
+
+#. module: xiao_claim
+#: model:ir.model,name:xiao_claim.model_sale_order
+msgid "Sales Order"
+msgstr "销售订单"
+
+#. module: xiao_claim
+#: field:xiao.claim,state:0
+msgid "State"
+msgstr "状态"
+
+#. module: xiao_claim
+#: model:ir.model,name:xiao_claim.model_xiao_claim
+msgid "Xiao Claim"
+msgstr "退换货申请"
+
+#. module: xiao_claim
+#: view:xiao.claim:xiao_claim.view_xiao_claim_good_form
+msgid "处理结果"
+msgstr "处理结果"
+
+#. module: xiao_claim
+#: view:xiao.claim:xiao_claim.view_xiao_claim_good_form
+msgid "申诉信息"
+msgstr "申诉信息"
+
+#. module: xiao_claim
+#: view:sale.order:xiao_claim.view_sale_order_invoice_inherit_form
+msgid "相关退换货"
+msgstr "相关退换货"
+
+#. module: xiao_claim
+#: view:xiao.claim:xiao_claim.view_xiao_claim_good_form
+msgid "退换货物流信息"
+msgstr "退换货物流信息"
+
+#. module: xiao_claim
+#: view:xiao.claim:xiao_claim.view_xiao_claim_good_form
+msgid "退货产品"
+msgstr "退货产品"
+
+#. module: xiao_claim
+#: model:ir.actions.act_window,name:xiao_claim.action_return_good_all
+#: model:ir.ui.menu,name:xiao_claim.menuitem_order_return_good_all
+msgid "退货申请"
+msgstr "退货申请"
+
+#. module: xiao_claim
+#: model:ir.ui.menu,name:xiao_claim.menuitem_order_return_good
+msgid "退货管理"
+msgstr "退货管理"
+
+#. module: xiao_claim
+#: view:xiao.claim:xiao_claim.view_xiao_claim_good_form
+msgid "问题描述"
+msgstr "问题描述"
+
