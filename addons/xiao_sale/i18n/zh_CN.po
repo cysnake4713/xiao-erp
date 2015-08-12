@@ -1,0 +1,94 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* xiao_sale
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-12 05:42+0000\n"
+"PO-Revision-Date: 2015-08-12 05:42+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: xiao_sale
+#: field:xiao.partner.limit.level,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: xiao_sale
+#: field:xiao.partner.limit.level,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: xiao_sale
+#: field:xiao.partner.limit.level,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: xiao_sale
+#: field:xiao.partner.limit.level,is_default:0
+msgid "Is Default"
+msgstr "默认使用"
+
+#. module: xiao_sale
+#: field:xiao.partner.limit.level,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: xiao_sale
+#: field:xiao.partner.limit.level,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: xiao_sale
+#: field:xiao.partner.limit.level,value:0
+msgid "Max Value"
+msgstr "上限"
+
+#. module: xiao_sale
+#: field:xiao.partner.limit.level,name:0
+msgid "Name"
+msgstr "名称"
+
+#. module: xiao_sale
+#: model:ir.model,name:xiao_sale.model_res_partner
+msgid "Partner"
+msgstr "业务伙伴"
+
+#. module: xiao_sale
+#: field:res.partner,sale_limit:0
+msgid "Sale Limit"
+msgstr "信用额度"
+
+#. module: xiao_sale
+#: model:ir.model,name:xiao_sale.model_xiao_partner_limit_level
+msgid "Xiao Partner Limit Level"
+msgstr "信用等级"
+
+#. module: xiao_sale
+#: model:ir.actions.act_window,name:xiao_sale.action_xiao_partner_limit_level
+#: model:ir.ui.menu,name:xiao_sale.menuitem
+msgid "信用等级"
+msgstr "信用等级"
+
+#. module: xiao_sale
+#: model:ir.actions.act_window,name:xiao_sale.action_partner_form_company
+msgid "公司信息"
+msgstr "公司信息"
+
+#. module: xiao_sale
+#: view:res.partner:xiao_sale.view_res_partner_limit_inherit_form
+msgid "剩余额度"
+msgstr "剩余额度"
+
+#. module: xiao_sale
+#: model:ir.actions.act_window,name:xiao_sale.action_partner_form_contract
+#: model:ir.ui.menu,name:xiao_sale.menuitem_partner_contract
+msgid "联系人信息"
+msgstr "联系人信息"
+
