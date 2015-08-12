@@ -16,6 +16,7 @@
                             <tree editable="top">
                                 <field name="real_invoice_date"/>
                                 <field name="real_invoice_number"/>
+                                <field name="real_invoice_amount"/>
                                 <field name="comment"/>
                             </tree>
                         </field>

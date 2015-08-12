@@ -1,0 +1,97 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* xiao_invoice
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-12 04:44+0000\n"
+"PO-Revision-Date: 2015-08-12 04:44+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: xiao_invoice
+#: model:ir.model,name:xiao_invoice.model_account_invoice_real_line
+msgid "Account Invoice Real Line"
+msgstr "实开发票记录"
+
+#. module: xiao_invoice
+#: field:account.invoice.real.line,comment:0
+msgid "Comment"
+msgstr "备注"
+
+#. module: xiao_invoice
+#: field:account.invoice.real.line,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: xiao_invoice
+#: field:account.invoice.real.line,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: xiao_invoice
+#: field:account.invoice.real.line,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: xiao_invoice
+#: model:ir.model,name:xiao_invoice.model_account_invoice
+msgid "Invoice"
+msgstr "发票"
+
+#. module: xiao_invoice
+#: field:account.invoice,invoice_company_name:0
+msgid "Invoice Company Name"
+msgstr "开票公司名"
+
+#. module: xiao_invoice
+#: field:account.invoice.real.line,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: xiao_invoice
+#: field:account.invoice.real.line,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: xiao_invoice
+#: field:account.invoice.real.line,real_invoice_amount:0
+msgid "Real Invoice Amount"
+msgstr "实开金额"
+
+#. module: xiao_invoice
+#: field:account.invoice.real.line,real_invoice_date:0
+msgid "Real Invoice Date"
+msgstr "开票日期"
+
+#. module: xiao_invoice
+#: field:account.invoice.real.line,real_invoice_number:0
+msgid "Real Invoice Number"
+msgstr "发票编号"
+
+#. module: xiao_invoice
+#: field:account.invoice,real_invoice_ids:0
+msgid "Real Invoices"
+msgstr "实开发票记录"
+
+#. module: xiao_invoice
+#: field:account.invoice.real.line,invoice_id:0
+msgid "Related Invoice"
+msgstr "相关发票"
+
+#. module: xiao_invoice
+#: model:ir.model,name:xiao_invoice.model_sale_order
+msgid "Sales Order"
+msgstr "销售订单"
+
+#. module: xiao_invoice
+#: view:account.invoice:xiao_invoice.view_account_invoice_inherit_form
+msgid "实开发票信息"
+msgstr "实开发票信息"
+

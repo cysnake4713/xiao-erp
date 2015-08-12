@@ -11,7 +11,7 @@ Xiao Invoice Update""",
     'website': 'http://odoosoft.com',
     'depends': ['base', 'sale', 'account'],
     'data': [
-        'views/order_view.xml',
+        'security/ir.model.access.csv',
         'views/invoice_view.xml',
     ],
     'qweb': [

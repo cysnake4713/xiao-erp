@@ -5,6 +5,7 @@
 from openerp import tools
 from openerp import models, fields, api
 from openerp.tools.translate import _
+import openerp.addons.decimal_precision as dp
 
 
 class InvoiceInherit(models.Model):
@@ -24,4 +25,5 @@ class RealInvoice(models.Model):
 
     real_invoice_number = fields.Char('Real Invoice Number')
     real_invoice_date = fields.Date('Real Invoice Date', default=lambda self: fields.Date.today())
+    real_invoice_amount = fields.Float('Real Invoice Amount', digits=dp.get_precision('Account'))
     comment = fields.Char('Comment')
