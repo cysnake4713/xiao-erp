@@ -5,6 +5,7 @@
 from openerp import tools
 from openerp import models, fields, api
 from openerp.tools.translate import _
+import openerp.addons.decimal_precision as dp
 
 
 class LimitLevel(models.Model):
@@ -35,9 +36,9 @@ class ResPartner(models.Model):
             return self.env['xiao.partner.limit.level']
 
     sale_limit = fields.Many2one('xiao.partner.limit.level', 'Sale Limit', default=_default_sale_limit)
-    credit_left = fields.Float('Credit Left', digits=(10, 2), compute='_compute_credit_count')
+    credit_left = fields.Float('Credit Left', digits=dp.get_precision('Account'), compute='_compute_credit_count')
     # override default
-    credit_limit = fields.Float('Credit Limit', compute='_compute_credit_count')
+    credit_limit = fields.Float('Credit Limit', digits=dp.get_precision('Account'), compute='_compute_credit_count')
 
     @api.multi
     def _compute_credit_count(self):
@@ -51,6 +52,7 @@ class ResPartner(models.Model):
 
     @api.multi
     def button_credit_left_list(self):
-        res = self.env['ir.actions.act_window'].for_xml_id('account', 'action_account_moves_all_tree')
-        res['domain'] = self._credit_search(obj=None, name=None, args=None)
+        res = self.env['ir.actions.act_window'].for_xml_id('account', 'action_invoice_refund_out_tree')
+        res['domain'] = [('type', 'in', ['out_invoice', 'out_refund']), ('state', 'not in', ['draft', 'cancel', 'paid']),
+                         ('partner_id', '=', self.id)]
         return res
