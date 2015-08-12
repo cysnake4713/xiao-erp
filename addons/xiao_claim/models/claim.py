@@ -30,3 +30,5 @@ class Claim(models.Model):
     new_carrier_id = fields.Char('New Carrier')
     new_carrier_tracking_ref = fields.Char('New Carrier Tracking Ref')
     response_description = fields.Text('Response Description')
+
+    returned_products = fields.Many2many('product.product', 'xiao_claim_product_rel', 'claim_id', 'product_id', 'Returned Product')

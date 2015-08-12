@@ -9,7 +9,7 @@
 Xiao Claim""",
     'author': 'Matt Cai',
     'website': 'http://odoosoft.com',
-    'depends': ['base', 'sale'],
+    'depends': ['base', 'sale', 'product'],
     'data': [
         'security/ir.model.access.csv',
 
