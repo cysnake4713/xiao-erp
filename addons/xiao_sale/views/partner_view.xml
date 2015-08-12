@@ -13,7 +13,7 @@
                         <div><strong><field name="credit_left" widget="monetary"/></strong><br/>剩余额度</div>
                     </button>
                 </xpath>
-                <field name="credit_limit" position="replace">
+                <field name="website" position="after">
                     <field name="sale_limit"/>
                 </field>
             </field>
