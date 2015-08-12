@@ -11,6 +11,7 @@ Xiao Cash back""",
     'website': 'http://odoosoft.com',
     'depends': ['base', 'account'],
     'data': [
+        'security/ir.model.access.csv',
         'views/menuitem.xml',
         'views/record_view.xml',
     ],

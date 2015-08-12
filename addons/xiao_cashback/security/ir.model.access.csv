@@ -1,0 +1,8 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+
+access_xiao_cash_back_record,access_xiao_cash_back_record,model_xiao_cash_back_record,account.group_account_user,1,1,1,1
+
+access_xiao_cash_back_line,access_xiao_cash_back_line,model_xiao_cash_back_line,account.group_account_user,1,1,1,1
+
+access_xiao_cash_back_config,access_xiao_cash_back_config,model_xiao_cash_back_config,account.group_account_user,1,0,0,0
+access_xiao_cash_back_config_manager,access_xiao_cash_back_config_manager,model_xiao_cash_back_config,account.group_account_manager,1,1,1,1
