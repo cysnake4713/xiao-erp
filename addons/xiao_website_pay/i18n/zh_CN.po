@@ -1,0 +1,78 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* xiao_website_pay
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-19 07:08+0000\n"
+"PO-Revision-Date: 2015-08-19 07:08+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: xiao_website_pay
+#: field:xiao.website.pay.log,create_uid:0
+msgid "Created by"
+msgstr "Created by"
+
+#. module: xiao_website_pay
+#: field:xiao.website.pay.log,create_date:0
+msgid "Created on"
+msgstr "Created on"
+
+#. module: xiao_website_pay
+#: field:xiao.website.pay.log,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: xiao_website_pay
+#: field:xiao.website.pay.log,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: xiao_website_pay
+#: field:xiao.website.pay.log,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: xiao_website_pay
+#: field:xiao.website.pay.log,order_id:0
+msgid "Order"
+msgstr "订单"
+
+#. module: xiao_website_pay
+#: field:xiao.website.pay.log,pay_datetime:0
+msgid "Pay Datetime"
+msgstr "付款时间"
+
+#. module: xiao_website_pay
+#: field:xiao.website.pay.log,name:0
+msgid "Pay Description"
+msgstr "付款描述"
+
+#. module: xiao_website_pay
+#: field:xiao.website.pay.log,price:0
+msgid "Price"
+msgstr "付款金额"
+
+#. module: xiao_website_pay
+#: model:ir.model,name:xiao_website_pay.model_xiao_website_pay_log
+msgid "Xiao Website Pay Log"
+msgstr "网站付款记录"
+
+#. module: xiao_website_pay
+#: model:res.groups,name:xiao_website_pay.group_wechat_pay_log_write
+msgid "写入在线支付信息"
+msgstr "写入在线支付信息"
+
+#. module: xiao_website_pay
+#: model:ir.actions.act_window,name:xiao_website_pay.action_xiao_website_pay_log
+#: model:ir.ui.menu,name:xiao_website_pay.menuitem_xiao_website_pay_manage
+msgid "在线付款记录"
+msgstr "在线付款记录"
+
