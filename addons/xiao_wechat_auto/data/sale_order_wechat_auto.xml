@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="filter_confirm_order" model="ir.filters">
+            <field name="name">更新后订单状态为待开发票</field>
+            <field name="model_id">sale.order</field>
+            <field name="domain">[('state', '=', 'manual')]</field>
+            <field name="user_id" eval="False"/>
+        </record>
+        <record id="pre_filter_confirm_order" model="ir.filters">
+            <field name="name">更新前订单状态不是开发票</field>
+            <field name="model_id">sale.order</field>
+            <field name="domain">[('state', '!=', 'manual')]</field>
+            <field name="user_id" eval="False"/>
+        </record>
+
+        <record id="action_confirm_order_create_wechat" model="ir.actions.server">
+            <field name="name">订单确认,发送微信通知</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">
+self.pool['odoosoft.wechat.enterprise.message'].create_message(cr, uid,
+                obj=object,
+                content=u'销售订单已经确认',
+                code='wechat.sale_order',
+                group_ids='base.group_sale_manager',
+                type='news',
+                template='wechat.sale.order',
+                context=context)
+            </field>
+        </record>
+
+        <record id="auto_rule_order_create_wechat" model="base.action.rule">
+            <field name="name">订单创建时自动发送通知到经理</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="sequence">10</field>
+            <field name="kind">on_write</field>
+            <field name="filter_id" ref="filter_confirm_order"/>
+            <field name="filter_pre_id" ref="pre_filter_confirm_order"/>
+            <field name="server_action_ids" eval="[(6,0,[ref('action_confirm_order_create_wechat')])]"/>
+        </record>
+    </data>
+</openerp>
