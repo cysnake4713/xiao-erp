@@ -7,6 +7,7 @@ import werkzeug.utils
 import logging
 from datetime import datetime
 import time
+from werkzeug.exceptions import HTTPException, NotFound
 
 _logger = logging.getLogger(__name__)
 
@@ -17,13 +18,16 @@ class StockWebsite(http.Controller):
         client = request.registry['odoosoft.wechat.enterprise.account'].get_client(request.cr, request.uid, code, context=request.context)
         if client:
             noncestr = 'Wm3WZYTPz0wzccnW'
-            timestamp = int(time.mktime(datetime.now().timetuple()))
-            url = '/mobile/stock/scan/%s' % code
+            ticket = client.jsapi.get_jsapi_ticket()
+            timestamp = client.jsapi.session.get('jsapi_ticket_expires_at', 0)
+            url = request.httprequest.base_url
             config = {
                 'corp_id': client.corp_id,
                 'noncestr': noncestr,
                 'timestamp': timestamp,
-                'signature': client.jsapi.get_jsapi_signature(noncestr, client.jsapi.get_jsapi_ticket(), timestamp, url)
+                'signature': client.jsapi.get_jsapi_signature(noncestr, ticket, timestamp, url)
 
             }
             return request.render('xiao_wechat_stock.scan', qcontext={'config': config})
+        else:
+            return NotFound()
