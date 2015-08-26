@@ -15,9 +15,35 @@ $(function () {
         });
     });
 
+    $('.check_state').on('click', function (e) {
+        e.preventDefault();
+        //window.location.href = new URI(window.location.href).setSearch('update_state', '1')
+        $.post('/mobile/stock/scan/update', {
+                'id': $('.data_form').first().data('id'),
+                'update_state': 1
+            },
+            function () {
+                location.reload();
+            }
+        );
+    });
+
+    $('.update_carrier_ref').on('click', function (e) {
+        e.preventDefault();
+        //window.location.href = new URI(window.location.href).setSearch('update_carrier_ref',$('.carrier_tracking_ref').val() );
+        $.post('/mobile/stock/scan/update', {
+                'id': $('.data_form').first().data('id'),
+                'update_carrier_ref': $('.carrier_tracking_ref').val()
+            },
+            function () {
+                location.reload();
+            }
+        );
+    });
+
     $('.carrier_tracking_ref_clear').on('click', function (e) {
         e.preventDefault();
-         $('.carrier_tracking_ref').val('');
+        $('.carrier_tracking_ref').val('');
     });
 
 

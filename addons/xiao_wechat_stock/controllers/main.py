@@ -32,6 +32,7 @@ class StockWebsite(http.Controller):
             # process list
             picking_ids = request.registry['stock.picking'].search(request.cr, request.uid,
                                                                    [('state', 'in', ['confirmed', 'partially_available', 'assigned'])],
+                                                                   order='id desc',
                                                                    context=request.context)
             result = request.registry['stock.picking'].browse(request.cr, request.uid, picking_ids, context=request.context)
 
@@ -55,7 +56,29 @@ class StockWebsite(http.Controller):
                 'debug': 'true' if 'debug' in kw else 'false',
 
             }
+            picking_obj = request.registry['stock.picking']
 
-            result = request.registry['stock.picking'].browse(request.cr, request.uid, int(id), context=request.context)
+            result = picking_obj.browse(request.cr, request.uid, int(id), context=request.context)
             return request.render('xiao_wechat_stock.stock_form', qcontext={'config': config, 'result': result, 'code': code})
         return NotFound()
+
+    @http.route('/mobile/stock/scan/update', type='http', auth='user_wechat')
+    def update_data(self, **kw):
+        picking_obj = request.registry['stock.picking']
+        message = ''
+        oid = kw['id']
+        if 'update_state' in kw:
+            try:
+                picking_obj.action_assign(request.cr, request.uid, [int(oid)], context=request.context)
+            except Exception, e:
+                message += e.message
+                _logger.error('Wechat Stock State Check Error: %s', e)
+
+        if 'update_carrier_ref' in kw:
+            try:
+                picking_obj.write(request.cr, request.uid, [int(oid)], {'carrier_tracking_ref': kw['update_carrier_ref']}, context=request.context)
+            except Exception, e:
+                message += e.message
+                _logger.error('Wechat Stock State Check Error: %s', e)
+
+        return message

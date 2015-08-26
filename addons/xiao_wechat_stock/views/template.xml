@@ -65,22 +65,34 @@
 
                 <header class="ui-header ui-header-stable ui-border-b">
                     <h1 t-field="result.name"/>
-                    <button class="ui-btn return-list"><a t-att-href="'/mobile/stock/scan/list/'+code">返回列表</a></button>
+                    <button class="ui-btn return-list">
+                        <a t-att-href="'/mobile/stock/scan/list/'+code">返回列表</a>
+                    </button>
                 </header>
                 <section class="ui-container">
                     <section>
                         <div class="ui-form ui-border-t">
-                            <form action="#">
+                            <form action="#" class="data_form" t-att-data-id="result.id">
                                 <div class="ui-form-item ui-form-item-show ui-border-b">
                                     <label>业务伙伴</label>
                                     <div class="ui-readonly-test" t-field="result.partner_id.name"/>
                                 </div>
-                                <div class="ui-form-item ui-form-item-l ui-border-b">
-                                    <label class="ui-border-r">
-                                        检查状态
-                                    </label>
-                                    <div class="ui-readonly-test" t-field="result.state"/>
-                                </div>
+                                <t t-if="result.state in ['confirmed','partially_available']">
+                                    <div class="ui-form-item ui-form-item-l ui-border-b">
+                                        <label class="ui-border-r check_state">
+                                            检查状态
+                                        </label>
+                                        <div class="ui-readonly-test" t-field="result.state"/>
+                                    </div>
+                                </t>
+                                <t t-if="result.state not in ['confirmed','partially_available']">
+                                    <div class="ui-form-item ui-form-item-show ui-border-b">
+                                        <label class="ui-border-r">
+                                            检查状态
+                                        </label>
+                                        <div class="ui-readonly-test" t-field="result.state"/>
+                                    </div>
+                                </t>
                                 <div class="ui-form-item ui-form-item-show ui-border-b">
                                     <label>创建日期</label>
                                     <div class="ui-readonly-test" t-field="result.date"/>
@@ -127,8 +139,8 @@
                     </section>
                     <section>
                         <div class="ui-btn-wrap">
-                            <button class="ui-btn-lg ui-btn-primary">
-                                更新
+                            <button class="ui-btn-lg ui-btn-primary update_carrier_ref">
+                                更新单号
                             </button>
                         </div>
                         <div class="ui-btn-wrap">
@@ -138,9 +150,9 @@
                         </div>
                     </section>
                 </section>
-                 <t t-set="footer">
-                     <script src="/xiao_wechat_stock/static/src/js/stock_scan.js"/>
-                 </t>
+                <t t-set="footer">
+                    <script src="/xiao_wechat_stock/static/src/js/stock_scan.js"/>
+                </t>
             </t>
         </template>
     </data>
