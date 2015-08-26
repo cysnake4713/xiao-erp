@@ -154,7 +154,7 @@
                         <t t-if="result.state in ['assigned']">
                             <div class="ui-btn-wrap">
                                 <button class="ui-btn-lg ui-btn-danger transfer_all">
-                                    确认已发货
+                                    确认已收/发货
                                 </button>
                             </div>
                         </t>

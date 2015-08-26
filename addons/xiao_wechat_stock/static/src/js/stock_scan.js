@@ -17,6 +17,7 @@ $(function () {
 
     $('.check_state').on('click', function (e) {
         e.preventDefault();
+        $('.loading_content').addClass('show');
         //window.location.href = new URI(window.location.href).setSearch('update_state', '1')
         $.post('/mobile/stock/scan/update', {
                 'id': $('.data_form').first().data('id'),
@@ -30,6 +31,7 @@ $(function () {
 
     $('.update_carrier_ref').on('click', function (e) {
         e.preventDefault();
+        $('.loading_content').addClass('show');
         //window.location.href = new URI(window.location.href).setSearch('update_carrier_ref',$('.carrier_tracking_ref').val() );
         $.post('/mobile/stock/scan/update', {
                 'id': $('.data_form').first().data('id'),
@@ -43,6 +45,7 @@ $(function () {
 
     $('.transfer_all').on('click', function (e) {
         e.preventDefault();
+        $('.loading_content').addClass('show');
         $.post('/mobile/stock/scan/update', {
                 'id': $('.data_form').first().data('id'),
                 'transfer_all': 1
