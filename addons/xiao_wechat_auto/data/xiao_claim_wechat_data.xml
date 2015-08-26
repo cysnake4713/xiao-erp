@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="map_xiao_claim" model="odoosoft.wechat.enterprise.map">
+            <field name="code">wechat.xiao.claim</field>
+        </record>
+
+        <record id="message_xiao_claim" model="odoosoft.wechat.enterprise.message.template">
+            <field name="code">template.wechat.xiao.claim</field>
+            <field name="name">客户退货</field>
+            <field name="title">客户退货提醒</field>
+            <field name="content">
+状态: ${fields['state'].convert_to_export(object.state, env)}
+客户: ${object.partner_id.name or ''}
+订单: ${object.order_id.name or ''}
+退货说明: ${object.description or ''}
+            </field>
+        </record>
+    </data>
+</openerp>

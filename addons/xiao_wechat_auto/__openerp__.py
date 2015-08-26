@@ -19,6 +19,9 @@ Xiao Wechat Auto""",
 
         'data/website_pay_wechat_data.xml',
         'data/website_pay_wechat_auto.xml',
+
+        'data/xiao_claim_wechat_data.xml',
+        'data/xiao_claim_wechat_auto.xml',
     ],
     'qweb': [
         'static/src/xml/*.xml',

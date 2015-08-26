@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!--<record id="filter_confirm_stock_picking" model="ir.filters">-->
+            <!--<field name="name">更新后作业状态为等待可用</field>-->
+            <!--<field name="model_id">stock.picking</field>-->
+            <!--<field name="domain">[('state', '=', 'confirmed')]</field>-->
+            <!--<field name="user_id" eval="False"/>-->
+        <!--</record>-->
+        <!--<record id="pre_filter_confirm_stock_picking" model="ir.filters">-->
+            <!--<field name="name">更新前作业状态不为等待可用</field>-->
+            <!--<field name="model_id">stock.picking</field>-->
+            <!--<field name="domain">[('state', '!=', 'confirmed')]</field>-->
+            <!--<field name="user_id" eval="False"/>-->
+        <!--</record>-->
+
+        <record id="action_confirm_xiao_claim_create_wechat" model="ir.actions.server">
+            <field name="name">客户退货记录</field>
+            <field name="model_id" ref="xiao_claim.model_xiao_claim"/>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">
+self.pool['odoosoft.wechat.enterprise.message'].create_message(cr, uid,
+                obj=object,
+                content=u'客户请求退货',
+                code='wechat.xiao.claim',
+                group_ids='base.group_sale_manager',
+                type='news',
+                template='template.wechat.xiao.claim',
+                context=context)
+            </field>
+        </record>
+
+        <record id="auto_rule_xiao_claim_create_wechat" model="base.action.rule">
+            <field name="name">客户退货自动提醒</field>
+            <field name="model_id" ref="xiao_claim.model_xiao_claim"/>
+            <field name="sequence">18</field>
+            <field name="kind">on_create</field>
+            <!--<field name="filter_id" ref="filter_confirm_stock_picking"/>-->
+            <!--<field name="filter_pre_id" ref="pre_filter_confirm_stock_picking"/>-->
+            <field name="server_action_ids" eval="[(6,0,[ref('action_confirm_xiao_claim_create_wechat')])]"/>
+        </record>
+    </data>
+</openerp>
