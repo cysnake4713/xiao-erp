@@ -12,7 +12,7 @@
             <field name="content">
 编号: ${object.name or ''}
 状态: ${fields['state'].convert_to_export(object.state, env)}
-客户: ${object.partner_id.id or ''}
+客户: ${object.partner_id.name or ''}
 订单日期: ${object.date_order or ''}
 已经支付: ${object.invoiced or ''}
 合计: ${object.amount_total}

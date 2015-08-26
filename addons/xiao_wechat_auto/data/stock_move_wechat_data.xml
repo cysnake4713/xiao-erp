@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="map_stock_picking" model="odoosoft.wechat.enterprise.map">
+            <field name="code">wechat.stock.picking</field>
+        </record>
+
+        <record id="message_stock_picking_wait" model="odoosoft.wechat.enterprise.message.template">
+            <field name="code">template.wechat.stock.picking.wait</field>
+            <field name="name">商品待发货</field>
+            <field name="title">商品待发货提醒</field>
+            <field name="content">
+编号: ${object.name or ''}
+状态: ${fields['state'].convert_to_export(object.state, env)}
+客户: ${object.partner_id.name or ''}
+客户地址: ${object.contact_address}
+确认作业日期: ${object.date}
+最迟发货/收货日期: ${object.min_date}
+            </field>
+        </record>
+    </data>
+</openerp>

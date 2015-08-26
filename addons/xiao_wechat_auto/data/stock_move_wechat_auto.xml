@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!--<record id="filter_confirm_stock_picking" model="ir.filters">-->
+            <!--<field name="name">更新后作业状态为等待可用</field>-->
+            <!--<field name="model_id">stock.picking</field>-->
+            <!--<field name="domain">[('state', '=', 'confirmed')]</field>-->
+            <!--<field name="user_id" eval="False"/>-->
+        <!--</record>-->
+        <!--<record id="pre_filter_confirm_stock_picking" model="ir.filters">-->
+            <!--<field name="name">更新前作业状态不为等待可用</field>-->
+            <!--<field name="model_id">stock.picking</field>-->
+            <!--<field name="domain">[('state', '!=', 'confirmed')]</field>-->
+            <!--<field name="user_id" eval="False"/>-->
+        <!--</record>-->
+
+        <record id="action_confirm_stock_picking_create_wechat" model="ir.actions.server">
+            <field name="name">货运单确认,发送微信通知</field>
+            <field name="model_id" ref="stock.model_stock_picking"/>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="state">code</field>
+            <field name="code">
+self.pool['odoosoft.wechat.enterprise.message'].create_message(cr, uid,
+                obj=object,
+                content=u'发/收货单已经确认',
+                code='wechat.stock.picking',
+                group_ids='stock.group_stock_manager',
+                type='news',
+                template='template.wechat.stock.picking.wait',
+                context=context)
+            </field>
+        </record>
+
+        <record id="auto_rule_stock_picking_create_wechat" model="base.action.rule">
+            <field name="name">仓储移动作业创建时自动发送通知到经理</field>
+            <field name="model_id" ref="stock.model_stock_picking"/>
+            <field name="sequence">12</field>
+            <field name="kind">on_create</field>
+            <!--<field name="filter_id" ref="filter_confirm_stock_picking"/>-->
+            <!--<field name="filter_pre_id" ref="pre_filter_confirm_stock_picking"/>-->
+            <field name="server_action_ids" eval="[(6,0,[ref('action_confirm_stock_picking_create_wechat')])]"/>
+        </record>
+    </data>
+</openerp>
