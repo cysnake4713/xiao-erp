@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="map_website_pay" model="odoosoft.wechat.enterprise.map">
+            <field name="code">wechat.website.pay</field>
+        </record>
+
+        <record id="message_website_pay" model="odoosoft.wechat.enterprise.message.template">
+            <field name="code">template.wechat.website.pay</field>
+            <field name="name">商家付款</field>
+            <field name="title">商家付款提醒</field>
+            <field name="is_no_url" eval="True"/>
+            <field name="content">
+订单: ${object.order_id.name or ''}
+客户: ${object.order_id.partner_id.name or ''}
+付款金额: ${object.price}
+付款时间: ${object.pay_datetime or ''}
+说明: ${object.name or ''}
+            </field>
+        </record>
+    </data>
+</openerp>

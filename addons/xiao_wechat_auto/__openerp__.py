@@ -16,6 +16,9 @@ Xiao Wechat Auto""",
 
         'data/stock_move_wechat_data.xml',
         'data/stock_move_wechat_auto.xml',
+
+        'data/website_pay_wechat_data.xml',
+        'data/website_pay_wechat_auto.xml',
     ],
     'qweb': [
         'static/src/xml/*.xml',

@@ -5,7 +5,7 @@
             <field name="name">view.xiao.website.pay.log.tree</field>
             <field name="model">xiao.website.pay.log</field>
             <field name="arch" type="xml">
-                <tree create="false" write="false" delete="false">
+                <tree editable="top">
                     <field name="order_id"/>
                     <field name="price"/>
                     <field name="name"/>
