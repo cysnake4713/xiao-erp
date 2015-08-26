@@ -1,20 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-        <template id="xiao_wechat_stock.scan" name="Wechat Stock Scan">
+        <template id="xiao_wechat_stock.stock_list" name="Wechat Stock List">
             <t t-call="odoosoft_wechat_website.layout">
-                <div>
-                    测试微信端是否正常
-                    <button id="test">测试扫描</button>
-                    <div id="result">
+                <header class="ui-header ui-header-stable ui-border-b">
+                    <h1>收发货列表</h1>
+                </header>
+                <section class="ui-container">
+                    <ul class="ui-list ui-list-pure ui-border-tb ui-list-link">
+                        <t t-foreach="result" t-as="picking">
+                            <li class="ui-border-t picking-list" t-att-data-id="picking.id">
+                                <div class="ui-row-flex ui-whitespace">
+                                    <div class="ui-col ui-col-1 ui-txt-default">编号</div>
+                                    <div class="ui-col ui-col-4 ui-nowrap ui-txt-info">
+                                        <p t-field="picking.name"/>
+                                    </div>
+                                </div>
+                                <div class="ui-row-flex ui-whitespace">
+                                    <div class="ui-col ui-col-1 ui-txt-default">状态</div>
+                                    <div class="ui-col ui-col ui-col-4 ui-txt-highlight">
+                                        <p t-field="picking.state"/>
+                                    </div>
+                                </div>
+                                <div class="ui-row-flex ui-whitespace">
+                                    <div class="ui-col ui-col-1 ui-txt-default">客户</div>
+                                    <div class="ui-col ui-col-4 ui-nowrap ui-txt-info">
+                                        <p t-field="picking.partner_id.name"/>
+                                    </div>
+                                </div>
 
-                    </div>
-                </div>
+                                <div class="ui-row-flex ui-whitespace">
+                                    <div class="ui-col ui-col-3 ui-txt-default">产品</div>
+                                    <div class="ui-col ui-col-2 ui-txt-default">数量</div>
+                                </div>
+                                <div class="ui-row-flex ui-whitespace" t-foreach="picking.move_lines" t-as="line">
+                                    <div class="ui-col ui-col-3 ui-txt-info">
+                                        <p t-field="line.product_id.name"/>
+                                    </div>
+                                    <div class="ui-col ui-col-2 ui-txt-info">
+                                        <p t-field="line.product_uom_qty"/>
+                                    </div>
+                                </div>
+                            </li>
+                        </t>
+                    </ul>
+                </section>
                 <t t-set="footer">
-                    <script src="/xiao_wechat_stock/static/src/js/stock_scan.js"/>
+                    <script>
+                        $(function(){
+                        var plist = $('.picking-list')
+                        plist.bind('click',function(e){
+                        e.preventDefault();
+                        var id = this.dataset.id;
+                        window.location.href = '/mobile/stock/scan/detail/<t t-esc="code"/>/'+id
+                        });
+                        });
+                    </script>
                 </t>
             </t>
+        </template>
 
+        <template id="xiao_wechat_stock.stock_form" name="Wechat Stock List">
+            <t t-call="odoosoft_wechat_website.layout">
+
+                <header class="ui-header ui-header-stable ui-border-b">
+                    <h1 t-field="result.name"/>
+                    <button class="ui-btn return-list"><a t-att-href="'/mobile/stock/scan/list/'+code">返回列表</a></button>
+                </header>
+                <section class="ui-container">
+                    <section>
+                        <div class="ui-form ui-border-t">
+                            <form action="#">
+                                <div class="ui-form-item ui-form-item-show ui-border-b">
+                                    <label>业务伙伴</label>
+                                    <div class="ui-readonly-test" t-field="result.partner_id.name"/>
+                                </div>
+                                <div class="ui-form-item ui-form-item-l ui-border-b">
+                                    <label class="ui-border-r">
+                                        检查状态
+                                    </label>
+                                    <div class="ui-readonly-test" t-field="result.state"/>
+                                </div>
+                                <div class="ui-form-item ui-form-item-show ui-border-b">
+                                    <label>创建日期</label>
+                                    <div class="ui-readonly-test" t-field="result.date"/>
+                                </div>
+                                <div class="ui-form-item ui-form-item-show ui-border-b">
+                                    <label>安排日期</label>
+                                    <div class="ui-readonly-test" t-field="result.min_date"/>
+                                </div>
+                                <div class="ui-form-item ui-form-item-show ui-border-b">
+                                    <label>承运方</label>
+                                    <div class="ui-readonly-test" t-field="result.carrier_id.name"/>
+                                </div>
+                                <div class="ui-form-item ui-form-item-l ui-border-b">
+                                    <label class="ui-border-r scan-wechat">
+                                        <a>扫描单号</a>
+                                    </label>
+                                    <input class="carrier_tracking_ref" type="text" t-att-value="result.carrier_tracking_ref"/>
+                                    <a class="ui-icon-close carrier_tracking_ref_clear" href="#"/>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                    <section>
+                        <div>
+                            <table class="ui-table ui-border-tb">
+                                <thead>
+                                    <tr>
+                                        <th>产品</th>
+                                        <th>数量</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="result.move_lines" t-as="line">
+                                        <td>
+                                            <span t-field="line.product_id.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.product_uom_qty"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="ui-btn-wrap">
+                            <button class="ui-btn-lg ui-btn-primary">
+                                更新
+                            </button>
+                        </div>
+                        <div class="ui-btn-wrap">
+                            <button class="ui-btn-lg ui-btn-danger">
+                                已发货
+                            </button>
+                        </div>
+                    </section>
+                </section>
+                 <t t-set="footer">
+                     <script src="/xiao_wechat_stock/static/src/js/stock_scan.js"/>
+                 </t>
+            </t>
         </template>
     </data>
 </openerp>
