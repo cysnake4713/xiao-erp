@@ -9,6 +9,7 @@
             <field name="code">template.wechat.stock.picking.wait</field>
             <field name="name">商品待发货</field>
             <field name="title">商品待发货提醒</field>
+            <field name="url">/mobile/stock/scan/detail/{account_code}/{res_id}</field>
             <field name="content">
 编号: ${object.name or ''}
 状态: ${fields['state'].convert_to_export(object.state, env)}
