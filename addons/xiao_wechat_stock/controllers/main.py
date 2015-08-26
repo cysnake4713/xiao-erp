@@ -81,4 +81,8 @@ class StockWebsite(http.Controller):
                 message += e.message
                 _logger.error('Wechat Stock State Check Error: %s', e)
 
+        if 'transfer_all' in kw:
+            wizard_view = picking_obj.do_enter_transfer_details(request.cr, request.uid, [int(oid)], context=request.context)
+            wizard = request.registry['stock.transfer_details'].browse(request.cr, request.uid, wizard_view['res_id'], context=request.context)
+            wizard.do_detailed_transfer()
         return message

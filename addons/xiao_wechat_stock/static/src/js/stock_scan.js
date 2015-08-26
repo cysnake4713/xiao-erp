@@ -41,6 +41,18 @@ $(function () {
         );
     });
 
+    $('.transfer_all').on('click', function (e) {
+        e.preventDefault();
+        $.post('/mobile/stock/scan/update', {
+                'id': $('.data_form').first().data('id'),
+                'transfer_all': 1
+            },
+            function () {
+                location.reload();
+            }
+        );
+    });
+
     $('.carrier_tracking_ref_clear').on('click', function (e) {
         e.preventDefault();
         $('.carrier_tracking_ref').val('');

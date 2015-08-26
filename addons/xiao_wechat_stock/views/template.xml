@@ -122,6 +122,8 @@
                                     <tr>
                                         <th>产品</th>
                                         <th>数量</th>
+                                        <th>可用</th>
+                                        <th>状态</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -131,6 +133,12 @@
                                         </td>
                                         <td>
                                             <span t-field="line.product_uom_qty"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.string_availability_info"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="line.state"/>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -143,11 +151,13 @@
                                 更新单号
                             </button>
                         </div>
-                        <div class="ui-btn-wrap">
-                            <button class="ui-btn-lg ui-btn-danger">
-                                已发货
-                            </button>
-                        </div>
+                        <t t-if="result.state in ['assigned']">
+                            <div class="ui-btn-wrap">
+                                <button class="ui-btn-lg ui-btn-danger transfer_all">
+                                    确认已发货
+                                </button>
+                            </div>
+                        </t>
                     </section>
                 </section>
                 <t t-set="footer">
