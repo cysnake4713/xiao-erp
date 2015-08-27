@@ -77,7 +77,7 @@
                                     <label>业务伙伴</label>
                                     <div class="ui-readonly-test" t-field="result.partner_id.name"/>
                                 </div>
-                                <t t-if="result.state in ['confirmed','partially_available']">
+                                <t t-if="result.state in ['confirmed']">
                                     <div class="ui-form-item ui-form-item-l ui-border-b">
                                         <label class="ui-border-r check_state">
                                             检查状态
@@ -85,7 +85,7 @@
                                         <div class="ui-readonly-test" t-field="result.state"/>
                                     </div>
                                 </t>
-                                <t t-if="result.state not in ['confirmed','partially_available']">
+                                <t t-if="result.state not in ['confirmed']">
                                     <div class="ui-form-item ui-form-item-show ui-border-b">
                                         <label class="ui-border-r">
                                             检查状态
