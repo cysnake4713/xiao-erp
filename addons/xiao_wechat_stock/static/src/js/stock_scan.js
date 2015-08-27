@@ -34,33 +34,65 @@ $(function () {
 
     $('.update_carrier_ref').on('click', function (e) {
         e.preventDefault();
-        var loading = $.loading({
-            content: '加载中...'
-        });
-        //window.location.href = new URI(window.location.href).setSearch('update_carrier_ref',$('.carrier_tracking_ref').val() );
-        $.post('/mobile/stock/scan/update', {
-                'id': $('.data_form').first().data('id'),
-                'update_carrier_ref': $('.carrier_tracking_ref').val()
-            },
-            function () {
-                location.reload();
-            }
-        );
+        var carrier_tracking_ref = $('.carrier_tracking_ref');
+        var call_update = function () {
+            var loading = $.loading({
+                content: '加载中...'
+            });
+            //window.location.href = new URI(window.location.href).setSearch('update_carrier_ref',$('.carrier_tracking_ref').val() );
+            $.post('/mobile/stock/scan/update', {
+                    'id': $('.data_form').first().data('id'),
+                    'update_carrier_ref': carrier_tracking_ref.val()
+                },
+                function () {
+                    location.reload();
+                }
+            );
+        };
+        if (carrier_tracking_ref.val()) {
+            call_update();
+        } else {
+            var dialog = $.dialog({
+                title: '确认操作',
+                content: '注意! 您没有填写快递单号,确认更新快递单号吗?',
+                select: 0,
+                button: ["确认", "取消"]
+            });
+            dialog.on('dialog:action', function (e) {
+                if (e.index == 0) {
+                    call_update();
+                }
+            })
+        }
+
     });
 
     $('.transfer_all').on('click', function (e) {
         e.preventDefault();
-        var loading = $.loading({
-            content: '加载中...'
+        var carrier_tracking_ref = $('.carrier_tracking_ref');
+        var dialog = $.dialog({
+            title: '确认操作',
+            content: (carrier_tracking_ref.val() ? '确认已经发货?' : '注意! 您没有填写快递单号,确认仍然发货吗?'),
+            select: 0,
+            button: ["确认", "取消"]
         });
-        $.post('/mobile/stock/scan/update', {
-                'id': $('.data_form').first().data('id'),
-                'transfer_all': 1
-            },
-            function () {
-                location.reload();
+
+        dialog.on('dialog:action', function (e) {
+            if (e.index == 0) {
+                var loading = $.loading({
+                    content: '加载中...'
+                });
+                $.post('/mobile/stock/scan/update', {
+                        'id': $('.data_form').first().data('id'),
+                        'transfer_all': 1,
+                        'update_carrier_ref': $('.carrier_tracking_ref').val()
+                    },
+                    function () {
+                        location.reload();
+                    }
+                );
             }
-        );
+        })
     });
 
     $('.carrier_tracking_ref_clear').on('click', function (e) {
