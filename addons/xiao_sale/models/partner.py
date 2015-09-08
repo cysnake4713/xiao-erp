@@ -40,6 +40,14 @@ class ResPartner(models.Model):
     # override default
     credit_limit = fields.Float('Credit Limit', digits=dp.get_precision('Account'), compute='_compute_credit_count')
 
+    business_lesson = fields.File('Business Lesson')
+    state = fields.Selection([('draft', 'Draft'), ('validated', 'Validated'), ('locked', 'Locked')], 'State', default='draft')
+
+    login_name = fields.Char('Login Name')
+    login_password = fields.Char('Login Password')
+
+    _sql_constraints = [('partner_login_name_unique', 'unique(login_name)', _('Login Name must be unique !'))]
+
     @api.multi
     def _compute_credit_count(self):
         for partner in self:
@@ -56,3 +64,13 @@ class ResPartner(models.Model):
         res['domain'] = [('type', 'in', ['out_invoice', 'out_refund']), ('state', 'not in', ['draft', 'cancel', 'paid']),
                          ('partner_id', '=', self.id)]
         return res
+
+    @api.multi
+    def button_validated_partner(self):
+        for partner in self:
+            partner.state = 'validated'
+
+    @api.multi
+    def button_locked_partner(self):
+        for partner in self:
+            partner.state = 'locked'
