@@ -9,5 +9,11 @@
         </record>
         <!-- This Menu Item must have a parent and an action -->
         <menuitem id="menuitem" name="信用等级" parent="base.menu_base_config" action="action_xiao_partner_limit_level" sequence="80"/>
+
+        <act_window id="act_window_res_partner_login_wizard"
+                    key2="client_action_multi" name="修改登录名/密码"
+                    res_model="res.partner.wizard.login"
+                    src_model="res.partner"
+                    view_mode="form" target="new" view_type="form"/>
     </data>
 </openerp>
