@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-09 09:23+0000\n"
-"PO-Revision-Date: 2015-08-09 09:23+0000\n"
+"POT-Creation-Date: 2015-09-08 09:57+0000\n"
+"PO-Revision-Date: 2015-09-08 09:57+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,62 @@ msgid "Product"
 msgstr "产品"
 
 #. module: xiao_product
+#: model:ir.model,name:xiao_product.model_product_template
+msgid "Product Template"
+msgstr "产品模板"
+
+#. module: xiao_product
+#: field:product.product,default_code:0
+msgid "Reference"
+msgstr "内部单号"
+
+#. module: xiao_product
+#: field:product.product,cost_method:0
+msgid "Costing Method"
+msgstr "成本价格计算方式"
+
+#. module: xiao_product
+#: field:product.product,standard_price:0
+msgid "Cost Price"
+msgstr "成本价格"
+
+#. module: xiao_product
+#: field:product.product,loc_rack:0
+msgid "Rack"
+msgstr "货架"
+
+#. module: xiao_product
+#: field:product.product,loc_row:0
+msgid "Row"
+msgstr "行"
+
+#. module: xiao_product
+#: field:product.product,loc_case:0
+msgid "Case"
+msgstr "专案"
+
+#. module: xiao_product
+#: field:product.product,volume:0
+msgid "Volume"
+msgstr "体积"
+
+#. module: xiao_product
+#: field:product.product,weight:0
+msgid "Gross Weight"
+msgstr "毛重"
+
+#. module: xiao_product
+#: field:product.product,weight_net:0
+msgid "Net Weight"
+msgstr "净重"
+
+#. module: xiao_product
 #: field:product.product,retail_price:0
 msgid "Retail Price"
 msgstr "零售价格"
+
+#. module: xiao_product
+#: field:product.product,store_lst_price:0
+msgid "Stored Lst Price"
+msgstr "Stored Lst Price"
 
