@@ -43,3 +43,9 @@ class ProductTemplate(models.Model):
         for product in products:
             res[product.id] = product.sudo()['lst_price']
         return res
+
+    _defaults = {
+        'type': 'product',
+        'cost_method': 'real',
+        'valuation': 'real_time',
+    }
