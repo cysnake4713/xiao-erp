@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-12 05:42+0000\n"
-"PO-Revision-Date: 2015-08-12 05:42+0000\n"
+"POT-Creation-Date: 2015-09-08 13:02+0000\n"
+"PO-Revision-Date: 2015-09-08 13:02+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,16 +16,29 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: xiao_sale
+#: field:res.partner,business_lesson:0
+msgid "Business Lesson"
+msgstr "营业执照"
+
+#. module: xiao_sale
+#: field:res.partner.wizard.login,create_uid:0
 #: field:xiao.partner.limit.level,create_uid:0
 msgid "Created by"
 msgstr "Created by"
 
 #. module: xiao_sale
+#: field:res.partner.wizard.login,create_date:0
 #: field:xiao.partner.limit.level,create_date:0
 msgid "Created on"
 msgstr "Created on"
 
 #. module: xiao_sale
+#: selection:res.partner,state:0
+msgid "Draft"
+msgstr "待审批"
+
+#. module: xiao_sale
+#: field:res.partner.wizard.login,id:0
 #: field:xiao.partner.limit.level,id:0
 msgid "ID"
 msgstr "ID"
@@ -36,14 +49,45 @@ msgid "Is Default"
 msgstr "默认使用"
 
 #. module: xiao_sale
+#: field:res.partner.wizard.login,write_uid:0
 #: field:xiao.partner.limit.level,write_uid:0
 msgid "Last Updated by"
 msgstr "Last Updated by"
 
 #. module: xiao_sale
+#: field:res.partner.wizard.login,write_date:0
 #: field:xiao.partner.limit.level,write_date:0
 msgid "Last Updated on"
 msgstr "Last Updated on"
+
+#. module: xiao_sale
+#: selection:res.partner,state:0
+msgid "Locked"
+msgstr "锁定"
+
+#. module: xiao_sale
+#: field:res.partner,login_name:0
+#: field:res.partner.wizard.login,login:0
+msgid "Login Name"
+msgstr "登录名"
+
+#. module: xiao_sale
+#: code:addons/xiao_sale/models/partner.py:49
+#: sql_constraint:res.partner:0
+#, python-format
+msgid "Login Name must be unique !"
+msgstr "登陆名不能重复 !"
+
+#. module: xiao_sale
+#: field:res.partner,login_password:0
+#: field:res.partner.wizard.login,password:0
+msgid "Login Password"
+msgstr "登陆密码"
+
+#. module: xiao_sale
+#: field:res.partner.wizard.login,password_confirm:0
+msgid "Login Password Confirm"
+msgstr "登陆密码确认"
 
 #. module: xiao_sale
 #: field:xiao.partner.limit.level,value:0
@@ -61,9 +105,30 @@ msgid "Partner"
 msgstr "业务伙伴"
 
 #. module: xiao_sale
+#: field:res.partner.wizard.login,partner:0
+msgid "Related Partner"
+msgstr "相关用户"
+
+#. module: xiao_sale
 #: field:res.partner,sale_limit:0
 msgid "Sale Limit"
 msgstr "信用额度"
+
+#. module: xiao_sale
+#: field:res.partner,state:0
+msgid "State"
+msgstr "状态"
+
+#. module: xiao_sale
+#: code:addons/xiao_sale/models/partner_wizard.py:29
+#, python-format
+msgid "Two Password Not Match"
+msgstr "两次的密码不相符"
+
+#. module: xiao_sale
+#: selection:res.partner,state:0
+msgid "Validated"
+msgstr "已激活"
 
 #. module: xiao_sale
 #: model:ir.model,name:xiao_sale.model_xiao_partner_limit_level
@@ -77,6 +142,11 @@ msgid "信用等级"
 msgstr "信用等级"
 
 #. module: xiao_sale
+#: model:ir.actions.act_window,name:xiao_sale.act_window_res_partner_login_wizard
+msgid "修改登录名/密码"
+msgstr "修改登录名/密码"
+
+#. module: xiao_sale
 #: model:ir.actions.act_window,name:xiao_sale.action_partner_form_company
 msgid "公司信息"
 msgstr "公司信息"
@@ -87,8 +157,28 @@ msgid "剩余额度"
 msgstr "剩余额度"
 
 #. module: xiao_sale
+#: view:res.partner:xiao_sale.view_res_partner_limit_inherit_form
+msgid "激活用户"
+msgstr "激活用户"
+
+#. module: xiao_sale
+#: view:res.partner:xiao_sale.view_res_partner_limit_inherit_form
+msgid "登陆信息"
+msgstr "登陆信息"
+
+#. module: xiao_sale
 #: model:ir.actions.act_window,name:xiao_sale.action_partner_form_contract
 #: model:ir.ui.menu,name:xiao_sale.menuitem_partner_contract
 msgid "联系人信息"
 msgstr "联系人信息"
+
+#. module: xiao_sale
+#: view:res.partner:xiao_sale.view_res_partner_limit_inherit_form
+msgid "营业执照"
+msgstr "营业执照"
+
+#. module: xiao_sale
+#: view:res.partner:xiao_sale.view_res_partner_limit_inherit_form
+msgid "锁定用户"
+msgstr "锁定用户"
 

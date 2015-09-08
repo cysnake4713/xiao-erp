@@ -29,10 +29,10 @@
                     <field name="sale_limit"/>
                 </field>
                 <xpath expr="//page[@name='sales_purchases']" position="after">
-                    <page string="营业执照">
+                    <page string="营业执照" attrs="{'invisible': [('is_company','=',False)]}">
                         <field name="business_lesson" widget="image"/>
                     </page>
-                    <page string="登陆信息">
+                    <page string="登陆信息" attrs="{'invisible': [('is_company','=',False)]}">
                         <group>
                             <field name="login_name" readonly="1"/>
                             <field name="login_password" password="True" readonly="1"/>
