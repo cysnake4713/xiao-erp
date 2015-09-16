@@ -5,6 +5,8 @@ from openerp import tools
 from openerp import models, fields, api
 from openerp.tools.translate import _
 import openerp.addons.decimal_precision as dp
+from ..tianvlib import client
+import json
 
 
 class Product(models.Model):
@@ -51,3 +53,22 @@ class ProductTemplate(models.Model):
         'cost_method': 'real',
         'valuation': 'real_time',
     }
+
+    @api.multi
+    def create_and_update_template(self):
+        for template in self:
+            if not template.tianv_id:
+                product_value = {
+                    "Title": template.name,
+                    # "Seo_Description": template,
+                    # "Seo_Title": "",
+                    "ProductType": u"实体商品",
+                    "Price": 0,
+                    "TypeId": 1131,
+                    'Attribute_infos': [],
+                    'Product_Number_Infos': [],
+                }
+                result = client.AddProduct(product=json.dumps(product_value), username='admin', pwd='123456')
+                template.tianv_id = int(result['Msg'])
+            else:
+                pass

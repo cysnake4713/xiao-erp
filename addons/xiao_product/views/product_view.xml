@@ -24,6 +24,11 @@
                 <field name="default_code" position="after">
                     <field name="tianv_id" readonly="1"/>
                 </field>
+                <xpath expr="//sheet" position="before">
+                    <header>
+                        <button name="create_and_update_template" type="object" string="远程同步"/>
+                    </header>
+                </xpath>
             </field>
         </record>
     </data>
