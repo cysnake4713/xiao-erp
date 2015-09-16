@@ -37,6 +37,8 @@ class Product(models.Model):
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
+    tianv_id = fields.Char('Tianv ID')
+
     @api.v7
     def _price_get(self, cr, uid, products, ptype='list_price', context=None):
         res = super(ProductTemplate, self)._price_get(cr, uid, products, ptype, context)
