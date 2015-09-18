@@ -12,6 +12,7 @@ Xiao Product""",
     'depends': ['base', 'product'],
     'data': [
         'views/product_view.xml',
+        'data/param.xml',
     ],
     'qweb': [
         'static/src/xml/*.xml',

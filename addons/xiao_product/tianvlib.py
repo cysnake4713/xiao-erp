@@ -27,6 +27,8 @@ class _Executable(object):
     def __call__(self, **kw):
         oa_client = Client(self.HTTP).service
         function = getattr(oa_client, self.method)
+        kw['username'] = config.get('tianv_name', 'admin')
+        kw['pwd'] = config.get('tianv_pwd', '123456')
         result = function(**kw)
         result = json.JSONDecoder().decode(result)
         if not result.get('R', True):
@@ -49,7 +51,7 @@ if __name__ == '__main__':
     # )
 
     # local_client = Client('http://test.tianv.net/plugins/Tianv_Mall_WS/MallProductWS.asmx?wsdl')
-    local_client = OAClient().GetProduct(id=1, username='admin', pwd='123456')
+    local_client = OAClient().GetProduct(id=18)
     print local_client
     # product_value = {
     #     "Title": "asdf",

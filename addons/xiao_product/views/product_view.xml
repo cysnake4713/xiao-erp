@@ -22,7 +22,7 @@
             <field name="arch" type="xml">
 
                 <field name="default_code" position="after">
-                    <field name="tianv_id" readonly="1"/>
+                    <field name="tianv_id" readonly="0"/>
                 </field>
                 <xpath expr="//sheet" position="before">
                     <header>

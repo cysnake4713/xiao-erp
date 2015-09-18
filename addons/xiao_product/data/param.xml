@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="param_tianv_product_type" model="ir.config_parameter">
+            <field name="key">tianv.product.type</field>
+            <field name="value">1131</field>
+        </record>
+    </data>
+</openerp>

@@ -62,13 +62,24 @@ class ProductTemplate(models.Model):
                     "Title": template.name,
                     # "Seo_Description": template,
                     # "Seo_Title": "",
-                    "ProductType": u"实体商品",
+                    # "ProductType": u"实体商品",
                     "Price": 0,
-                    "TypeId": 1131,
+                    "TypeId": int(self.env['ir.config_parameter'].get_param('tianv.product.type')),
                     'Attribute_infos': [],
                     'Product_Number_Infos': [],
                 }
-                result = client.AddProduct(product=json.dumps(product_value), username='admin', pwd='123456')
+                result = client.AddProduct(product=json.dumps(product_value))
                 template.tianv_id = int(result['Msg'])
             else:
-                pass
+                product_value = client.GetProduct(id=18)
+
+                product_value.update({
+                    "Title": template.name,
+                    # "Seo_Description": template,
+                    # "Seo_Title": "",
+                    # "ProductType": u"实体商品",
+                    # "Price": 0,
+                    # 'Attribute_infos': [],
+                    # 'Product_Number_Infos': [],
+                })
+                client.EditProduct(product=json.dumps(product_value))
