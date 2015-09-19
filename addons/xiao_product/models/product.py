@@ -65,7 +65,23 @@ class ProductTemplate(models.Model):
                     # "ProductType": u"实体商品",
                     "Price": 0,
                     "TypeId": int(self.env['ir.config_parameter'].get_param('tianv.product.type')),
-                    'Attribute_infos': [],
+                    'Attribute_infos': [
+                        {"AttributeName": attribute.attribute_id.name,
+                         # "Product_Info_id": 18,
+                         "rule": u"单选",
+                         # "Max": 0,
+                         # "Min": 0,
+                         "IsNum": u"服务",
+                         "Type": u"默认类型",
+                         "Parameter_Infos": [
+                             {"ParameterName": v.name,
+                              "TextValue": v.name,
+                              # "Coefficient": 11.0,
+                              # "Remark": "备注",
+                              # "Number": -1,
+                              # "def": u"不选"
+                              } for v in attribute.value_ids]
+                         } for attribute in template.attribute_line_ids],
                     'Product_Number_Infos': [],
                 }
                 result = client.AddProduct(product=json.dumps(product_value))
