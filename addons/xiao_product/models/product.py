@@ -77,6 +77,7 @@ class ProductTemplate(models.Model):
                     "TypeId": int(self.env['ir.config_parameter'].get_param('tianv.product.type')),
                     'Attribute_infos': [],
                     'Product_Number_Infos': [],
+                    "ProductType": u"实物产品",
                 }
                 result = client.AddProduct(product=json.dumps(product_value))
                 template.tianv_id = int(result['Msg'])
