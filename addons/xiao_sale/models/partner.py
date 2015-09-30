@@ -43,8 +43,7 @@ class ResPartner(models.Model):
     business_lesson = fields.File('Business Lesson')
     state = fields.Selection([('draft', 'Draft'), ('validated', 'Validated'), ('locked', 'Locked')], 'State', default='draft')
 
-    login_name = fields.Char('Login Name')
-    login_password = fields.Char('Login Password')
+    tianv_id = fields.Char('Tianv ID')
 
     _sql_constraints = [('partner_login_name_unique', 'unique(login_name)', _('Login Name must be unique !'))]
 
