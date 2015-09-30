@@ -53,26 +53,27 @@ if __name__ == '__main__':
     local_client = Client('http://test.tianv.net/plugins/Tianv_Mall_WS/MallProductWS.asmx?wsdl')
 
     # local_client.service.DelProduct_Number(id=1, username='admin', pwd='123456')
-    print local_client.service.GetProduct(id=18, username='admin', pwd='123456')
-    # local_client.service.AddOrEditProduct_Number_Info(proid=1, Product_Number_InfoJson=json.dumps([{
-    #     # "id": 0,
-    #     "Product_Info_id": 1,
-    #     "parIds": "15",
-    #     "parNames": "asdfasdf",
-    #     "Number": 958,
-    #     "Price": 2.0
-    # }, ]), username='admin', pwd='123456')
-    temp_value = [{
-        "id": 22,
-        "Product_Info_id": 18,
-        "AttributeName": "111测试sw",
-        "rule": u"单选",
-        "Max": 0,
-        "Min": 0,
-        "IsNum": u"服务",
-        "Type": u"默认类型",
-        "Parameter_Infos": []
-    }]
+    print local_client.service.GetProduct(id=34, username='admin', pwd='123456')
+    # local_client.service.AddOrEditProduct_Number_Info(proid=34, Product_Number_InfoJson=json.dumps([
+    #     {"id": 0,
+    #      "Product_Info_id": 29,
+    #      "parIds": '83',
+    #      "parNames": "undefined",
+    #      "Number": 1,
+    #      "Price": 1,
+    #      }
+    # ]), username='admin', pwd='123456')
+    # temp_value = [{
+    #     "id": 22,
+    #     "Product_Info_id": 18,
+    #     "AttributeName": "111测试sw",
+    #     "rule": u"单选",
+    #     "Max": 0,
+    #     "Min": 0,
+    #     "IsNum": u"服务",
+    #     "Type": u"默认类型",
+    #     "Parameter_Infos": []
+    # }]
     # print local_client.service.sync_product_param(product_id=18,
     #                                               json=json.dumps(temp_value),  # json=json.dumps(product_value),
     #                                               username='admin', pwd='123456')
