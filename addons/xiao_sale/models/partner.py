@@ -38,7 +38,7 @@ class ResPartner(models.Model):
     sale_limit = fields.Many2one('xiao.partner.limit.level', 'Sale Limit', default=_default_sale_limit)
     credit_left = fields.Float('Credit Left', digits=dp.get_precision('Account'), compute='_compute_credit_count')
     # override default
-    credit_limit = fields.Float('Credit Limit', digits=dp.get_precision('Account'), compute='_compute_credit_count')
+    # credit_limit = fields.Float('Credit Limit', digits=dp.get_precision('Account'), compute='_compute_credit_count')
 
     business_lesson = fields.File('Business Lesson')
     state = fields.Selection([('draft', 'Draft'), ('validated', 'Validated'), ('locked', 'Locked')], 'State', default='draft')
@@ -52,10 +52,10 @@ class ResPartner(models.Model):
         for partner in self:
             if partner.sale_limit:
                 partner.credit_left = partner.sale_limit.value - partner.credit
-                partner.credit_limit = partner.sale_limit.value
+                # partner.credit_limit = partner.sale_limit.value
             else:
                 partner.credit_left = 0.0
-                partner.credit_limit = 0.0
+                # partner.credit_limit = 0.0
 
     @api.multi
     def button_credit_left_list(self):
