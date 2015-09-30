@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_interface_configuration" model="ir.ui.view">
+            <field name="name">view.interface.config.settings.form</field>
+            <field name="model">interface.config.settings</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button string="确认" type="object" name="execute" class="oe_highlight"/>
+                        or
+                        <button string="取消" type="object" name="cancel" class="oe_link"/>
+                    </header>
+                    <group string="产品同步">
+                        <field name="product_type_default"/>
+                    </group>
+                    <group string="用户同步">
+                        <field name="partner_company_default"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+    </data>
+</openerp>

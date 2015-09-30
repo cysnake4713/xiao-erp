@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="action_interface_configuration" model="ir.actions.act_window">
+            <field name="name">接口设置</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">interface.config.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+        </record>
+        <menuitem id="menu_interface_configuration" parent="base.menu_config" string="接口同步设置"
+                  sequence="115" action="action_interface_configuration"/>
+    </data>
+</openerp>
