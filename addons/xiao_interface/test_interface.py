@@ -23,7 +23,8 @@ class TestPartner(unittest.TestCase):
     def test_partner_sync(self):
         file = open('/home/cysnake4713/Pictures/选区_014.png', 'rb').read().encode('base64')
         data = {
-            'name': '客户公司名称',
+            'id': 37,
+            'name': '客户公司名称111',
             'email': 'aa@163.com',  # Email
             'mobile': '1234124',  # Mobile
             'country_id': 'CN',  # Address_Country 中国就是CN, 其它国家的暂时不传递都行呢
