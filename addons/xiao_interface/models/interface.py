@@ -17,7 +17,6 @@ class InterfaceWizard(models.AbstractModel):
             self.env['res.partner'].browse(partner_id).write(data)
         else:
             data['is_company'] = True
-            data['']
             data['company_id'] = self.env['ir.config_parameter'].get_param('interface.partner_company_default')
             partner_id = self.env['res.partner'].create(data).id
         return partner_id
