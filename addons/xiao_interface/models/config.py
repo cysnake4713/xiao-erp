@@ -7,7 +7,7 @@ from openerp import models, fields, api
 from openerp.tools.translate import _
 
 
-class PartnerConfig(models.Model):
+class PartnerConfig(models.TransientModel):
     _name = 'interface.config.settings'
     _inherit = 'res.config.settings'
 

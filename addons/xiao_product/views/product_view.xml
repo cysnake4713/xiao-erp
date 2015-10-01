@@ -26,7 +26,8 @@
                 </field>
                 <xpath expr="//sheet" position="before">
                     <header>
-                        <button name="create_and_update_template" type="object" string="远程同步"/>
+                        <button name="create_and_update_template" type="object" string="远程同步"
+                                groups="base.group_sale_manager"/>
                     </header>
                 </xpath>
             </field>
