@@ -35,6 +35,7 @@ class ResPartner(models.Model):
         else:
             return self.env['xiao.partner.limit.level']
 
+    qq = fields.Char('QQ')
     sale_limit = fields.Many2one('xiao.partner.limit.level', 'Sale Limit', default=_default_sale_limit)
     credit_left = fields.Float('Credit Left', digits=dp.get_precision('Account'), compute='_compute_credit_count')
     # override default

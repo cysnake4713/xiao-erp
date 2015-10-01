@@ -28,6 +28,9 @@
                 <field name="website" position="after">
                     <field name="sale_limit"/>
                 </field>
+                <field name="email" position="after">
+                    <field name="qq"/>
+                </field>
                 <xpath expr="//page[@name='sales_purchases']" position="after">
                     <page string="营业执照" attrs="{'invisible': [('is_company','=',False)]}">
                         <field name="business_lesson" widget="image"/>
