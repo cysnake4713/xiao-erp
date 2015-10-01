@@ -12,6 +12,14 @@ class InterfaceWizard(models.AbstractModel):
 
     @api.model
     def interface_sync_user(self, data):
+        # pre process country and state
+        if 'country_id' in data:
+            country_id = self.env['res.country'].search([('code', '=', data['country_id'])])
+            data['country_id'] = country_id[0].id if country_id else False
+        if 'state_id' in data:
+            state_id = self.env['res.country.state'].search([('name', 'like', '%%%s%%' % data['state_id'])])
+            data['state_id'] = state_id[0].id if state_id else False
+
         if 'id' in data:
             partner_id = data.pop('id')
             self.env['res.partner'].browse(partner_id).write(data)
