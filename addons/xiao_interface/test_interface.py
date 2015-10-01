@@ -7,15 +7,15 @@ import xmlrpclib
 
 class TestPartner(unittest.TestCase):
     def setUp(self):
-        username = 'admin'  # the user
-        self.pwd = 'xiao_2015'  # the password of the user
-        self.dbname = 'xiao-erp'  # the database
-        OPENERP_URL = 'localhost:8069'
-
         # username = 'admin'  # the user
         # self.pwd = 'xiao_2015'  # the password of the user
-        # self.dbname = 'xiao-test'  # the database
-        # OPENERP_URL = 'toa.szstc.co'
+        # self.dbname = 'xiao-erp'  # the database
+        # OPENERP_URL = 'localhost:8069'
+
+        username = 'syncuser'  # the user
+        self.pwd = '123456'  # the password of the user
+        self.dbname = 'xiao-test'  # the database
+        OPENERP_URL = 'toa.szstc.co'
         sock_common = xmlrpclib.ServerProxy('http://' + OPENERP_URL + '/xmlrpc/common')
         self.uid = sock_common.login(self.dbname, username, self.pwd)
         self.client = xmlrpclib.ServerProxy('http://' + OPENERP_URL + '/xmlrpc/object')
@@ -23,8 +23,8 @@ class TestPartner(unittest.TestCase):
     def test_partner_sync(self):
         file = open('/home/cysnake4713/Pictures/选区_014.png', 'rb').read().encode('base64')
         data = {
-            'id': 37,
-            'name': '客户公司名称111',
+            # 'id': 37 , # 不填写表示创建, 填写表示更新
+            'name': '客户公司名称111',  # 公司名称 ,如果是创建的话此字段必填
             'email': 'aa@163.com',  # Email
             'mobile': '1234124',  # Mobile
             'country_id': 'CN',  # Address_Country 中国就是CN, 其它国家的暂时不传递都行呢
