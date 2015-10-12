@@ -1,0 +1,110 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* xiao_expense
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-12 08:16+0000\n"
+"PO-Revision-Date: 2015-10-12 08:16+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: xiao_expense
+#: selection:xiao.expense,state:0
+msgid "Draft"
+msgstr "草稿"
+
+#. module: xiao_expense
+#: field:xiao.expense.line,expense_id:0
+msgid "Expense"
+msgstr "报销申请"
+
+#. module: xiao_expense
+#: field:xiao.expense,expense_date:0
+msgid "Expense Date"
+msgstr "报销日期"
+
+#. module: xiao_expense
+#: field:xiao.expense,id:0
+#: field:xiao.expense.line,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: xiao_expense
+#: field:xiao.expense,line_ids:0
+msgid "Lines"
+msgstr "记录"
+
+#. module: xiao_expense
+#: field:xiao.expense,name:0
+#: field:xiao.expense.line,name:0
+msgid "Name"
+msgstr "说明"
+
+#. module: xiao_expense
+#: selection:xiao.expense,state:0
+msgid "Paid"
+msgstr "已付"
+
+#. module: xiao_expense
+#: field:xiao.expense.line,price:0
+msgid "Price"
+msgstr "金额"
+
+#. module: xiao_expense
+#: selection:xiao.expense,state:0
+msgid "Processing"
+msgstr "处理中"
+
+#. module: xiao_expense
+#: field:xiao.expense,state:0
+msgid "State"
+msgstr "状态"
+
+#. module: xiao_expense
+#: field:xiao.expense,user_id:0
+msgid "User"
+msgstr "申请人"
+
+#. module: xiao_expense
+#: model:ir.model,name:xiao_expense.model_xiao_expense
+msgid "Xiao Expense"
+msgstr "报销申请"
+
+#. module: xiao_expense
+#: model:ir.model,name:xiao_expense.model_xiao_expense_line
+msgid "Xiao Expense Line"
+msgstr "报销记录"
+
+#. module: xiao_expense
+#: model:ir.ui.menu,name:xiao_expense.menuitem_xiao_expense_root
+msgid "报销"
+msgstr "报销"
+
+#. module: xiao_expense
+#: model:ir.actions.act_window,name:xiao_expense.action_xiao_expense_all
+#: model:ir.ui.menu,name:xiao_expense.menuitem_xiao_expense_manage
+msgid "报销申请"
+msgstr "报销申请"
+
+#. module: xiao_expense
+#: model:ir.ui.menu,name:xiao_expense.menuitem_xiao_expense_category
+msgid "报销管理"
+msgstr "报销管理"
+
+#. module: xiao_expense
+#: model:res.groups,name:xiao_expense.group_xiao_expense_user
+msgid "用户"
+msgstr "用户"
+
+#. module: xiao_expense
+#: model:res.groups,name:xiao_expense.group_xiao_expense_manager
+msgid "经理"
+msgstr "经理"
+

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="view_xiao_expense_tree" model="ir.ui.view">
+            <field name="name">view.xiao.expense.tree</field>
+            <field name="model">xiao.expense</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="expense_date"/>
+                    <field name="user_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_xiao_expense_form" model="ir.ui.view">
+            <field name="name">view.xiao.expense.form</field>
+            <field name="model">xiao.expense</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="common_apply" string="确认" type="object" class="oe_highlight"
+                                states_editable="{'draft':{'users':[user_id]},}"
+                                context="{
+                                'state': 'processing',
+                                'message_groups': [%(xiao_expense.group_xiao_expense_manager)d],
+                                'message': '有新的报销申请',
+                                'wechat_code': ['xiao.expense'],
+                                'wechat_template': %(xiao_expense.message_xiao_expense)d,
+                                }"
+                                />
+                        <button name="common_apply" string="已付" type="object" class="oe_highlight"
+                                states_editable="{'processing':{'groups':[%(xiao_expense.group_xiao_expense_manager)d]},}"
+                                context="{
+                                'state': 'paid',
+                                'message_users': [user_id],
+                                'message': '已报销付款',
+                                'wechat_code': ['xiao.expense'],
+                                'wechat_template': %(xiao_expense.message_xiao_expense)d,
+                                }"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group col="4">
+                            <field name="name"/>
+                            <field name="expense_date"/>
+                            <field name="user_id" readonly="1"/>
+                        </group>
+                        <field name="line_ids">
+                            <tree editable="bottom">
+                                <field name="name"/>
+                                <field name="price"/>
+                            </tree>
+                        </field>
+                        <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                            <field name="total" nolabel="1" class="oe_subtotal_footer_separator" widget='monetary'/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+
+            </field>
+        </record>
+    </data>
+</openerp>

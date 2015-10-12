@@ -1,0 +1,3 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+access_xiao_expense_line,access_xiao_expense_line,model_xiao_expense_line,xiao_expense.group_xiao_expense_user,1,1,1,1
+access_xiao_expense,access_xiao_expense,model_xiao_expense,xiao_expense.group_xiao_expense_user,1,1,1,1

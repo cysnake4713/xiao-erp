@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="action_xiao_expense_all" model="ir.actions.act_window">
+            <field name="name">报销申请</field>
+            <field name="res_model">xiao.expense</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+        <menuitem id="menuitem_xiao_expense_root" name="报销" sequence="12" groups="xiao_expense.group_xiao_expense_user"/>
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="menuitem_xiao_expense_category" name="报销管理" parent="menuitem_xiao_expense_root" sequence="5"/>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="menuitem_xiao_expense_manage" name="报销申请" parent="menuitem_xiao_expense_category" sequence="5"
+                  action="action_xiao_expense_all"/>
+    </data>
+</openerp>
