@@ -12,7 +12,7 @@ class Product(models.Model):
 
     retail_price = fields.Float('Retail Price', digits=dp.get_precision('Product Price'))
     store_lst_price = fields.Float('Stored Lst Price', digits=dp.get_precision('Product Price'), )
-    lst_price = fields.Float('Lst Price', digits=dp.get_precision('Product Price'), compute='_get_lst_price', inverse='_set_lst_price')
+    lst_price = fields.Float('Lst Price', digits=dp.get_precision('Product Price'), compute='_get_price', inverse='_set_lst_price')
 
     # weight
     volume = fields.Float('Volume', help="The volume in m3.")
@@ -24,15 +24,24 @@ class Product(models.Model):
     loc_row = fields.Char('Row', size=16)
     loc_case = fields.Char('Case', size=16)
     description = fields.Text('Description')
+    standard_price = fields.Float('Cost Price', digits=dp.get_precision('Product Price'), groups="base.group_user", compute='_get_price',
+                                  inverse='_set_standard_price')
+    store_standard_price = fields.Float('Store Cost Price')
 
-    @api.one
-    @api.depends('store_lst_price')
-    def _get_lst_price(self):
-        self.lst_price = self.store_lst_price
+    @api.multi
+    @api.depends('store_lst_price', 'store_standard_price')
+    def _get_price(self):
+        for product in self:
+            product.lst_price = product.store_lst_price
+            product.standard_price = product.store_standard_price
 
     @api.one
     def _set_lst_price(self):
         self.store_lst_price = self.lst_price
+
+    @api.one
+    def _set_standard_price(self):
+        self.store_standard_price = self.standard_price
 
 
 class ProductTemplate(models.Model):
