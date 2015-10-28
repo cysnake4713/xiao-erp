@@ -23,6 +23,7 @@ class Product(models.Model):
     loc_rack = fields.Char('Rack', size=16)
     loc_row = fields.Char('Row', size=16)
     loc_case = fields.Char('Case', size=16)
+    description = fields.Text('Description')
 
     @api.one
     @api.depends('store_lst_price')
