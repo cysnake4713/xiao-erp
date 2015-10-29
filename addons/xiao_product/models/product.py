@@ -12,7 +12,7 @@ class Product(models.Model):
 
     retail_price = fields.Float('Retail Price', digits=dp.get_precision('Product Price'))
     store_lst_price = fields.Float('Stored Lst Price', digits=dp.get_precision('Product Price'), )
-    lst_price = fields.Float('Lst Price', digits=dp.get_precision('Product Price'), compute='_get_price', inverse='_set_lst_price')
+    lst_price = fields.Float('Lst Price', digits=dp.get_precision('Product Price'), compute='_get_price')
 
     # weight
     volume = fields.Float('Volume', help="The volume in m3.")
@@ -24,8 +24,7 @@ class Product(models.Model):
     loc_row = fields.Char('Row', size=16)
     loc_case = fields.Char('Case', size=16)
     description = fields.Text('Description')
-    standard_price = fields.Float('Cost Price', digits=dp.get_precision('Product Price'), groups="base.group_user", compute='_get_price',
-                                  inverse='_set_standard_price')
+    standard_price = fields.Float('Cost Price', digits=dp.get_precision('Product Price'), groups="base.group_user", compute='_get_price')
     store_standard_price = fields.Float('Store Cost Price')
 
     @api.multi
@@ -35,13 +34,23 @@ class Product(models.Model):
             product.lst_price = product.store_lst_price
             product.standard_price = product.store_standard_price
 
-    @api.one
-    def _set_lst_price(self):
-        self.store_lst_price = self.lst_price
+    @api.model
+    def create(self, args):
+        self._inverse_price(args)
+        return super(Product, self).create(args)
 
-    @api.one
-    def _set_standard_price(self):
-        self.store_standard_price = self.standard_price
+    @api.multi
+    def write(self, args):
+        self._inverse_price(args)
+        super(Product, self).write(args)
+        return True
+
+    @api.model
+    def _inverse_price(self, args):
+        if 'lst_price' in args:
+            args['store_lst_price'] = args['lst_price']
+        if 'standard_price' in args:
+            args['store_standard_price'] = args['standard_price']
 
 
 class ProductTemplate(models.Model):
