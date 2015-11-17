@@ -26,7 +26,7 @@ class StockWebsite(http.Controller):
 
     @http.route('/mobile/stock/scan/detail/<code>/<id>', type='http', auth='user_wechat')
     def stock_form(self, code, id, **kw):
-        client = request.registry['odoosoft.wechat.enterprise.account'].get_client(request.cr, request.uid, code, context=request.context)
+        client = request.registry['odoosoft.wechat.enterprise.account'].get_client_by_code(request.cr, request.uid, code, context=request.context)
         if client:
             noncestr = 'Wm3WZYTPz0wzccnW'
             ticket = client.jsapi.get_jsapi_ticket()
