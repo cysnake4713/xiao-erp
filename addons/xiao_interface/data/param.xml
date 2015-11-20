@@ -5,5 +5,9 @@
             <field name="key">tianv.product.type</field>
             <field name="value">1131</field>
         </record>
+        <record id="param_tianv_company_default" model="ir.config_parameter">
+            <field name="key">interface.partner.company.default</field>
+            <field name="value">1</field>
+        </record>
     </data>
 </openerp>

@@ -18,7 +18,7 @@ class PartnerConfig(models.TransientModel):
 
     _defaults = {
         'partner_company_default': lambda self, cr, uid, ct:
-            self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.partner_company_default',
+            self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.partner.company.default',
                                                        ct),
         'product_type_default': lambda self, cr, uid, ct: int(
             self.pool['ir.config_parameter'].get_param(cr, uid, 'tianv.product.type',
@@ -28,7 +28,7 @@ class PartnerConfig(models.TransientModel):
     @api.multi
     def set_default_info(self):
         self.env['ir.config_parameter'].set_param('tianv.product.type', self.product_type_default)
-        self.env['ir.config_parameter'].set_param('interface.partner_company_default', str(self.partner_company_default.id))
+        self.env['ir.config_parameter'].set_param('interface.partner.company.default', str(self.partner_company_default.id))
 
         # @api.multi
         # def button_backup_db(self):
