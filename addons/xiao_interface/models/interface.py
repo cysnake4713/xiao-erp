@@ -28,3 +28,12 @@ class InterfaceWizard(models.AbstractModel):
             data['company_id'] = self.env['ir.config_parameter'].get_param('interface.partner_company_default')
             partner_id = self.env['res.partner'].create(data).id
         return partner_id
+
+
+class SyncLog(models.Model):
+    _name = 'interface.sync.log'
+    _rec_name = 'name'
+    _description = 'Sync Log'
+
+    log_datetime = fields.Datetime('Log Datetime', default=lambda obj: fields.Datetime.now())
+    name = fields.Char('Info')

@@ -79,6 +79,6 @@ class ResPartner(models.Model):
                     'parent_id': company_maps[user_info['companyId']][0] if user_info['companyId'] in company_maps else 0,
                 })
 
-    @api.multi
-    def temp_sync(self):
+    @api.model
+    def cron_sync(self):
         self.sync_tianv_data()
