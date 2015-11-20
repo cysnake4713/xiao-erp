@@ -12,5 +12,3 @@ class ResPartner(models.Model):
     _inherit = 'res.partner'
 
     qq = fields.Char('QQ')
-
-    tianv_id = fields.Char('Tianv ID')
