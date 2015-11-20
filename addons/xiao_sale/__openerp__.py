@@ -11,13 +11,13 @@ Xiao Sale Update Module""",
     'website': 'http://odoosoft.com',
     'depends': ['base', 'sale'],
     'data': [
-        'security/ir.model.access.csv',
+        # 'security/ir.model.access.csv',
 
-        'views/product_template_view.xml',
-        'views/limit_level_view.xml',
+        # 'views/product_template_view.xml',
+        # 'views/limit_level_view.xml',
         'views/partner_view.xml',
-        'views/partner_wizard.xml',
-        'views/menuitem.xml',
+        # 'views/partner_wizard.xml',
+        # 'views/menuitem.xml',
     ],
     'qweb': [
         'static/src/xml/*.xml',

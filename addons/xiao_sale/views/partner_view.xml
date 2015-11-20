@@ -7,41 +7,9 @@
             <field name="model">res.partner</field>
             <field name="inherit_id" ref="base.view_partner_form"/>
             <field name="arch" type="xml">
-
-                <xpath expr="//sheet" position="before">
-                    <header>
-                        <button string="激活用户" name="button_validated_partner" type="object" class="oe_highlight" states="draft,locked"/>
-                        <button string="锁定用户" name="button_locked_partner" type="object" states="draft,validated"/>
-                        <field name="state" widget="statusbar"/>
-                    </header>
-                </xpath>
-                <xpath expr="//div[@name='buttons']" position="inside">
-                    <button name="button_credit_left_list" type="object" class="oe_stat_button" icon="fa-list">
-                        <div>
-                            <strong>
-                                <field name="credit_left" widget="monetary"/>
-                            </strong>
-                            <br/>剩余额度
-                        </div>
-                    </button>
-                </xpath>
-                <field name="website" position="after">
-                    <field name="sale_limit"/>
-                </field>
                 <field name="email" position="after">
                     <field name="qq"/>
                 </field>
-                <xpath expr="//page[@name='sales_purchases']" position="after">
-                    <page string="营业执照" attrs="{'invisible': [('is_company','=',False)]}">
-                        <field name="business_lesson" widget="image"/>
-                    </page>
-                    <page string="绑定信息" attrs="{'invisible': [('is_company','=',False)]}">
-                        <group>
-                            <field name="tianv_id" readonly="1"/>
-                        </group>
-                    </page>
-                </xpath>
-                <!--<field name="credit_limit" position="replace"/>-->
             </field>
         </record>
 
