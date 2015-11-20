@@ -15,6 +15,7 @@ Xiao Interface""",
         'data/param.xml',
         'views/menu.xml',
         'views/product_view.xml',
+        'views/partner_view.xml',
         'views/base_setup_view.xml',
     ],
     'qweb': [

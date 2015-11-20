@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="view_res_partner_inherit_form" model="ir.ui.view">
+            <field name="name">view.res.partner.limit.inherit.form.interface</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <page name="sales_purchases" position="after">
+                    <page string="网站关联账户" groups="base.group_system">
+                        <group>
+                            <field name="tianv_id"/>
+                            <field name="tianv_last_update"/>
+                        </group>
+                    </page>
+                </page>
+            </field>
+        </record>
+    </data>
+</openerp>
