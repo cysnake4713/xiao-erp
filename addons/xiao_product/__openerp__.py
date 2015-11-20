@@ -11,9 +11,7 @@ Xiao Product""",
     'website': 'http://odoosoft.com',
     'depends': ['base', 'product'],
     'data': [
-        'security/ir.model.access.csv',
         'views/product_view.xml',
-        'data/param.xml',
     ],
     'qweb': [
         'static/src/xml/*.xml',
