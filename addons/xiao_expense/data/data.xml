@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="map_xiao_expense" model="odoosoft.wechat.enterprise.map">
+            <field name="code">xiao.expense</field>
+        </record>
+
+        <record id="message_xiao_expense" model="odoosoft.wechat.enterprise.message.template">
+            <field name="name">报销申请</field>
+            <field name="title">报销申请</field>
+            <field name="content">
+状态: ${fields['state'].convert_to_export(object.state, env)}
+报销人: ${object.user_id.name or ''}
+说明: ${object.name or ''}
+金额: ${object.total or ''}
+            </field>
+        </record>
+    </data>
+</openerp>
