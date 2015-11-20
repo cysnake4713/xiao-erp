@@ -4,11 +4,30 @@
 import unittest, json, copy
 import tianvlib
 
+class TianvSyncPartnerTest(unittest.TestCase):
+    def setUp(self):
+        self.maxDiff = None
+        self.client = tianvlib.partner_client
+
+    def test_get_partner_ids(self):
+        # print self.client.GetPartnerIds()
+        self.assertIsInstance(self.client.GetPartnerIds(), dict)
+
+    def test_get_company_info(self):
+        # print self.client.GetCompanyInfo(id=7)
+        self.assertTrue('companyType' in self.client.GetCompanyInfo(id=7))
+
+    def test_get_partner_info(self):
+        # print self.client.GetUserInfo(id=2)
+        self.assertTrue('companyId' in self.client.GetUserInfo(id=2))
+
+
 
 # @unittest.skip('skip attr')
 class TianvSyncAttrTest(unittest.TestCase):
     def setUp(self):
-        self.client = tianvlib.client
+        self.maxDiff = None
+        self.client = tianvlib.product_client
         init_product_value = {
             "id": 0,
             "Title": u"G209 美式弓形卸扣-测试",
@@ -20,7 +39,7 @@ class TianvSyncAttrTest(unittest.TestCase):
             # "Description": None,
             # "Detail": None,
             # "Base64_MultilinePicture": None,
-            "TypeId": 1131,
+            "TypeId": 2791,
             # "ProductType": u"实物产品",
             # "Obj_infoId": 9356,
             "Attribute_infos": [
@@ -34,7 +53,7 @@ class TianvSyncAttrTest(unittest.TestCase):
             ],
             "Product_Number_Infos": []
         }
-        result = self.client.AddProduct(product=json.dumps(init_product_value))
+        result = self.product_client.AddProduct(product=json.dumps(init_product_value))
         self.assertTrue(result.get('R', False))
         self.product_id = int(result['Msg'])
         # print ('product_id = %s' % self.product_id)
@@ -84,7 +103,7 @@ class TianvSyncAttrTest(unittest.TestCase):
     def get_result(self):
         return self.client.GetProduct(id=self.product_id)['Attribute_infos']
 
-    @unittest.skip('skip create test')
+    # @unittest.skip('skip create test')
     def test_sync_product_param_attribute_create(self):
         self.clear_attr()
         origin_value = [
@@ -188,7 +207,7 @@ class TianvSyncAttrTest(unittest.TestCase):
 class TianvSyncParamTest(unittest.TestCase):
     def setUp(self):
         self.maxDiff = None
-        self.client = tianvlib.client
+        self.client = tianvlib.product_client
         init_product_value = {
             "id": 0,
             "Title": u"G209 美式弓形卸扣-测试",
@@ -293,7 +312,7 @@ class TianvSyncParamTest(unittest.TestCase):
     def get_result(self):
         return self.client.GetProduct(id=self.product_id)['Attribute_infos']
 
-    @unittest.skip('skip create')
+    # @unittest.skip('skip create')
     def test_param_create(self):
         self.clear_attr()
         origin_value = [
@@ -416,7 +435,7 @@ class TianvSyncParamTest(unittest.TestCase):
 class TianvSyncBothTest(unittest.TestCase):
     def setUp(self):
         self.maxDiff = None
-        self.client = tianvlib.client
+        self.client = tianvlib.product_client
         init_product_value = {
             "id": 0,
             "Title": u"G209 美式弓形卸扣-测试",
