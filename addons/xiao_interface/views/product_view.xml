@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="product_template_form_inherit_view" model="ir.ui.view">
+            <field name="name">view.product.template.form.inherit.interface</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <field name="default_code" position="after">
+                    <field name="tianv_id" readonly="0"/>
+                </field>
+                <xpath expr="//sheet" position="before">
+                    <header>
+                        <button name="create_and_update_template" type="object" string="远程同步"
+                                groups="base.group_sale_manager"/>
+                    </header>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
