@@ -1,2 +1,3 @@
 "id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
 access_product_template_tianv_value,access_product_template_tianv_value,model_product_template_tianv_value,base.group_sale_manager,1,1,1,1
+access_interface_sync_log,access_interface_sync_log,model_interface_sync_log,,1,0,0,0

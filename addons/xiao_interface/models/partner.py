@@ -81,4 +81,11 @@ class ResPartner(models.Model):
 
     @api.model
     def cron_sync(self):
-        self.sync_tianv_data()
+        try:
+            self.env.cr.execute('SAVEPOINT sync_partners')
+            self.sync_tianv_data()
+        except Exception, e:
+            self.env['interface.sync.log'].create({'name': str(e)})
+            self.env.cr.execute('ROLLBACK TO SAVEPOINT sync_partners')
+        self.env.cr.execute('RELEASE SAVEPOINT sync_partners')
+        return True
