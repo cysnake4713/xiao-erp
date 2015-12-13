@@ -31,6 +31,7 @@ class _ProductExecutable(object):
         self.method = method
 
     def __call__(self, **kw):
+        _logger.info('get tianv server client.......')
         oa_client = Client(self.HTTP).service
         function = getattr(oa_client, self.method)
         if 'key' not in kw:
