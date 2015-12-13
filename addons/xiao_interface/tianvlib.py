@@ -36,9 +36,10 @@ class _ProductExecutable(object):
         if 'key' not in kw:
             kw['username'] = config.get('tianv_name', 'admin')
             kw['pwd'] = config.get('tianv_pwd', '123456')
-        _logger.info(('call tianv server method:%s' % self.method))
+        _logger.info(('calling tianv server method:%s' % self.method))
         _logger.debug('params:%s', kw)
         result = function(**kw)
+        _logger.info(('finish tianv server method:%s' % self.method))
         result = json.loads(result)
         if not result.get('R', True):
             raise exceptions.Warning(u'同步远程服务器出错:%s' % result.get('Msg', result))
