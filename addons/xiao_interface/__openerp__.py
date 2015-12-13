@@ -13,6 +13,7 @@ Xiao Interface""",
     'data': [
         'security/ir.model.access.csv',
         'views/menu.xml',
+        'views/tianv_product_map.xml',
         'views/product_view.xml',
         'views/partner_view.xml',
         'views/base_setup_view.xml',

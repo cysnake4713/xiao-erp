@@ -70,7 +70,7 @@ class ProductTemplate(models.Model):
             # clear all value map
             tianv_value_obj.search([('template_id', '=', template.id)]).unlink()
             for attr in result:
-                template.attribute_line_ids.filtered(lambda tl: tl.attribute_id.id == attr['odooId']).tianv_id = attr['id']
+                template.attribute_line_ids.filtered(lambda tl: tl.id == attr['odooId']).tianv_id = attr['id']
                 # generate new value map
                 for param in attr['Parameter_Infos']:
                     tianv_value_obj.set_tianv_id(template.id, param['odooId'], param['id'])

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="view_" model="ir.ui.view">
+            <field name="name">view.product.template.tianv.value.tree</field>
+            <field name="model">product.template.tianv.value</field>
+            <field name="arch" type="xml">
+                <tree edit="false" create="false" unlink="false">
+                    <field name="template_id"/>
+                    <field name="val_id"/>
+                    <field name="tianv_id"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</openerp>

@@ -45,44 +45,44 @@ class _ProductExecutable(object):
     __repr__ = __str__
 
 
-class OAPartnerClient:
-    # def __init__(self):
-    #     self.HASH_CODE = config.get('oa_hass_code')
-
-    def __init__(self):
-        pass
-
-    def __getattr__(self, attr):
-        # if config.get('oa_is_sync'):
-        #     # if False:
-        return _PartnerExecutable(attr)
-        # else:
-        #     return lambda **o: None
-
-
-class _PartnerExecutable(object):
-    def __init__(self, method):
-        self.HTTP = 'http://%s/plugins/Tianv_Mall_WS/MallPartnerWS.asmx?wsdl' % config.get('tianv_server', 'test.tianv.net')
-        self.method = method
-
-    def __call__(self, **kw):
-        oa_client = Client(self.HTTP).service
-        function = getattr(oa_client, self.method)
-        kw['key'] = config.get('tianv_key', '1DE19422-0D6D-49C8-B17C-59542CE73A3A')
-        result = function(**kw)
-        result = json.loads(result)
-        if not result.get('R', True):
-            raise exceptions.Warning(u'同步远程服务器出错:%s' % result.get('Msg', result))
-        return result
-
-    def __str__(self):
-        return '_Executable (%s %s)' % (self._method, self._path)
-
-    __repr__ = __str__
+# class OAPartnerClient:
+#     # def __init__(self):
+#     #     self.HASH_CODE = config.get('oa_hass_code')
+#
+#     def __init__(self):
+#         pass
+#
+#     def __getattr__(self, attr):
+#         # if config.get('oa_is_sync'):
+#         #     # if False:
+#         return _PartnerExecutable(attr)
+#         # else:
+#         #     return lambda **o: None
+#
+#
+# class _PartnerExecutable(object):
+#     def __init__(self, method):
+#         self.HTTP = 'http://%s/plugins/Tianv_Mall_WS/MallPartnerWS.asmx?wsdl' % config.get('tianv_server', 'test.tianv.net')
+#         self.method = method
+#
+#     def __call__(self, **kw):
+#         oa_client = Client(self.HTTP).service
+#         function = getattr(oa_client, self.method)
+#         kw['key'] = config.get('tianv_key', '1DE19422-0D6D-49C8-B17C-59542CE73A3A')
+#         result = function(**kw)
+#         result = json.loads(result)
+#         if not result.get('R', True):
+#             raise exceptions.Warning(u'同步远程服务器出错:%s' % result.get('Msg', result))
+#         return result
+#
+#     def __str__(self):
+#         return '_Executable (%s %s)' % (self._method, self._path)
+#
+#     __repr__ = __str__
 
 
 product_client = OAProductClient()
-partner_client = OAPartnerClient()
+# partner_client = OAPartnerClient()
 
 if __name__ == '__main__':
     # json_params = (

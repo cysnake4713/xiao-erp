@@ -3,12 +3,35 @@
 #
 import unittest, json, copy
 import tianvlib
+from openerp import fields
+
+
+class TianvSyncOrderTest(unittest.TestCase):
+    def setUp(self):
+        self.maxDiff = None
+        self.client = tianvlib.product_client
+
+    def test_get_order_ids_all(self):
+        result = self.client.GetOrderIds()
+        print result
+        self.assertIsInstance(result, dict)
+
+    def test_get_order_ids_with_date(self):
+        result = self.client.GetOrderIds(updateTime=fields.Datetime.now())
+        print result
+        self.assertIsInstance(result, dict)
+
+    def test_get_order_by_id(self):
+        result = self.client.GetOrderById(id=221)
+        print result
+        self.assertIsInstance(result, dict)
+        # self.assertTrue('companyType' in self.client.GetCompanyInfo(id=7))
 
 
 class TianvSyncPartnerTest(unittest.TestCase):
     def setUp(self):
         self.maxDiff = None
-        self.client = tianvlib.partner_client
+        self.client = tianvlib.product_client
 
     def test_get_partner_ids(self):
         # print self.client.GetPartnerIds()
@@ -582,18 +605,18 @@ class TianvSyncBothTest(unittest.TestCase):
             u"def": u"不选",
         })
         target_value.append(
-            {
-                u'Min': 0,
-                u'Max': 0,
-                "odooId": 2,
-                u'Product_Info_id': self.product_id,
-                u'AttributeName': u"新增属性",
-                u'IsNum': u"服务",
-                u"rule": u"单选",
-                u'Parameter_Infos': [],
-                u"Type": u"默认类型",
-                u'id': 0,
-            }
+                {
+                    u'Min': 0,
+                    u'Max': 0,
+                    "odooId": 2,
+                    u'Product_Info_id': self.product_id,
+                    u'AttributeName': u"新增属性",
+                    u'IsNum': u"服务",
+                    u"rule": u"单选",
+                    u'Parameter_Infos': [],
+                    u"Type": u"默认类型",
+                    u'id': 0,
+                }
         )
 
         # print target_value
@@ -630,18 +653,18 @@ class TianvSyncBothTest(unittest.TestCase):
             u"def": u"不选",
         })
         target_value.append(
-            {
-                u'Min': 0,
-                u'Max': 0,
-                u'Product_Info_id': self.product_id,
-                u'AttributeName': u"新增属性",
-                u'IsNum': u"服务",
-                u"rule": u"单选",
-                u'Parameter_Infos': [],
-                u"Type": u"默认类型",
-                "odooId": 2,
-                u'id': 0,
-            }
+                {
+                    u'Min': 0,
+                    u'Max': 0,
+                    u'Product_Info_id': self.product_id,
+                    u'AttributeName': u"新增属性",
+                    u'IsNum': u"服务",
+                    u"rule": u"单选",
+                    u'Parameter_Infos': [],
+                    u"Type": u"默认类型",
+                    "odooId": 2,
+                    u'id': 0,
+                }
         )
 
         # print target_value
@@ -656,6 +679,3 @@ class TianvSyncBothTest(unittest.TestCase):
         target_value[0]['Parameter_Infos'][1]['Att_Info_id'] = result[0]['Parameter_Infos'][1]['Att_Info_id']
 
         self.assertEqual(result, target_value)
-
-if __name__ == '__main__':
-    unittest.main()

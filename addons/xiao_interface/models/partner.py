@@ -5,7 +5,7 @@
 from openerp import tools
 from openerp import models, fields, api
 from openerp.tools.translate import _
-from ..tianvlib import partner_client as client
+from ..tianvlib import product_client as client
 
 
 class ResPartner(models.Model):
@@ -78,6 +78,10 @@ class ResPartner(models.Model):
                     'email': user_info['mail'],
                     'parent_id': company_maps[user_info['companyId']][0] if user_info['companyId'] in company_maps else 0,
                 })
+
+    @api.multi
+    def button_sync_now(self):
+        self.sync_tianv_data()
 
     @api.model
     def cron_sync(self):
