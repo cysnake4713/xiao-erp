@@ -5,6 +5,9 @@ import json
 from suds.client import Client
 from openerp.tools import config
 from openerp import exceptions
+import logging
+
+_logger = logging.getLogger(__name__)
 
 
 class OAProductClient:
@@ -33,6 +36,8 @@ class _ProductExecutable(object):
         if 'key' not in kw:
             kw['username'] = config.get('tianv_name', 'admin')
             kw['pwd'] = config.get('tianv_pwd', '123456')
+        _logger.info(('call tianv server method:%s' % self.method))
+        _logger.debug('params:%s', kw)
         result = function(**kw)
         result = json.loads(result)
         if not result.get('R', True):
