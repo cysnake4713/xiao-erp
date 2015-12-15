@@ -36,7 +36,7 @@ class ResPartner(models.Model):
                     'company_type': company_info['companyType'],
                     'tianv_last_update': remote_company['lastUpdate'],
                     'is_company': True,
-                    'company_id': self.env['ir.config_parameter'].get_param('interface.partner.company.default')
+                    'company_id': eval(self.env['ir.config_parameter'].get_param('interface.partner.company.default', 'False'))
                 })
                 company_maps.update({remote_company['id']: (new_company.id, remote_company['lastUpdate'])})
             # update
@@ -64,7 +64,7 @@ class ResPartner(models.Model):
                     'email': user_info['mail'],
                     'parent_id': company_maps[user_info['companyId']][0] if user_info['companyId'] in company_maps else 0,
                     'is_company': False,
-                    'company_id': self.env['ir.config_parameter'].get_param('interface.partner.company.default')
+                    'company_id': eval(self.env['ir.config_parameter'].get_param('interface.partner.company.default', 'False'))
                 })
             # update
             elif remote_user['lastUpdate'] != user_maps[remote_user['id']][1]:

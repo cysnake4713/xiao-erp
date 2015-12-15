@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_order_form_inherit" model="ir.ui.view">
+            <field name="name">view.sale.order.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+
+                <field name="partner_id" position="after">
+                    <field name="delivery_address" readonly="1"/>
+                    <field name="delivery_name" readonly="1"/>
+                    <field name="delivery_phone" readonly="1"/>
+                    <field name="pay_method" readonly="1"/>
+                    <field name="deliveryPrice" readonly="1"/>
+                    <field name="invoice_type" readonly="1"/>
+                    <field name="tianv_state" readonly="1"/>
+                    <field name="tianv_id"/>
+                </field>
+
+                <field name="company_id" position="after">
+                    <button name="button_sync_now" type="object" string="立刻同步"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>
