@@ -9,8 +9,16 @@
             <field name="key">interface.partner.company.default</field>
             <field name="value">1</field>
         </record>
+        <record id="param_tianv_warehouse_default" model="ir.config_parameter">
+            <field name="key">interface.warehouse.company.default</field>
+            <field name="value">1</field>
+        </record>
         <record id="param_tianv_order_last_update" model="ir.config_parameter">
             <field name="key">interface.order.last.update</field>
+            <field name="value">False</field>
+        </record>
+        <record id="param_tianv_partner_last_update" model="ir.config_parameter">
+            <field name="key">interface.partner.last.update</field>
             <field name="value">False</field>
         </record>
     </data>

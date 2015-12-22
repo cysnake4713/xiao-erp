@@ -17,6 +17,7 @@
                     </group>
                     <group string="用户同步">
                         <field name="partner_company_default"/>
+                        <field name="partner_warehouse_default"/>
                     </group>
                 </form>
             </field>

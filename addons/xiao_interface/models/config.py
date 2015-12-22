@@ -16,20 +16,25 @@ class PartnerConfig(models.TransientModel):
     # partner
     partner_company_default = fields.Many2one('res.company', 'Partner Company Default')
 
+    partner_warehouse_default = fields.Many2one('stock.warehouse', 'Warehouse Default')
+
     _defaults = {
-        'partner_company_default': lambda self, cr, uid, ct:
-            self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.partner.company.default',
-                                                       ct),
-        'product_type_default': lambda self, cr, uid, ct: int(
-            self.pool['ir.config_parameter'].get_param(cr, uid, 'tianv.product.type',
-                                                       ct)),
+        'partner_company_default': lambda self, cr, uid, ct: eval(
+                self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.partner.company.default', 'False', ct))
+        ,
+        'partner_warehouse_default': lambda self, cr, uid, ct: eval(
+                self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.warehouse.company.default', 'False', ct))
+        ,
+        'product_type_default': lambda self, cr, uid, ct: eval(
+                self.pool['ir.config_parameter'].get_param(cr, uid, 'tianv.product.type', 'False', ct)),
     }
 
     @api.multi
     def set_default_info(self):
-        self.env['ir.config_parameter'].set_param('tianv.product.type', self.product_type_default)
+        self.env['ir.config_parameter'].set_param('tianv.product.type', str(self.product_type_default))
         self.env['ir.config_parameter'].set_param('interface.partner.company.default', str(self.partner_company_default.id))
+        self.env['ir.config_parameter'].set_param('interface.warehouse.company.default', str(self.partner_warehouse_default.id))
 
-        # @api.multi
-        # def button_backup_db(self):
-        #     return self.env['interface.config.settings'].cron_backup_db()
+# @api.multi
+# def button_backup_db(self):
+#     return self.env['interface.config.settings'].cron_backup_db()

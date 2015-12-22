@@ -33,6 +33,10 @@ class TianvSyncPartnerTest(unittest.TestCase):
         self.maxDiff = None
         self.client = tianvlib.product_client
 
+    def test_get_user_ids(self):
+        result = self.client.GetUserIds(UpdateTime=fields.Datetime.now())
+        print result
+
     def test_get_partner_ids(self):
         # print self.client.GetPartnerIds()
         self.assertIsInstance(self.client.GetPartnerIds(), dict)

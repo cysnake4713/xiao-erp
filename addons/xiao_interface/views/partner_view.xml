@@ -10,7 +10,6 @@
                     <page string="网站关联账户" groups="base.group_system">
                         <group>
                             <field name="tianv_id"/>
-                            <field name="tianv_last_update"/>
                             <field name="industry" attrs="{'invisible':[('is_company','=',False)]}"/>
                             <field name="company_type" attrs="{'invisible':[('is_company','=',False)]}"/>
                             <button name="button_sync_now" type="object" string="立刻同步"/>
