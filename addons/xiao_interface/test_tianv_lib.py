@@ -6,6 +6,27 @@ import tianvlib
 from openerp import fields
 
 
+class TianvSyncGoldTest(unittest.TestCase):
+    def setUp(self):
+        self.maxDiff = None
+        self.client = tianvlib.product_client
+
+    def test_get_gold_ids_all(self):
+        result = self.client.GetUserGoldIds()
+        print result
+        self.assertIsInstance(result, dict)
+
+    def test_get_gold_ids_with_date(self):
+        result = self.client.GetUserGoldIds(UpdateTime=fields.Datetime.now())
+        print result
+        self.assertIsInstance(result, dict)
+
+    def test_get_gold_by_id(self):
+        result = self.client.GetUserGoldIds(id=3)
+        print result
+        self.assertIsInstance(result, dict)
+
+
 class TianvSyncOrderTest(unittest.TestCase):
     def setUp(self):
         self.maxDiff = None

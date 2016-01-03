@@ -36,7 +36,7 @@ class _ProductExecutable(object):
         function = getattr(oa_client, self.method)
         if 'key' not in kw:
             kw['username'] = config.get('tianv_name', 'admin')
-            if self.method == 'GetUserIds':
+            if self.method in ['GetUserIds', 'GetUserGoldIds', 'GetUserGoldById']:
                 kw['password'] = config.get('tianv_pwd', '123456')
             else:
                 kw['pwd'] = config.get('tianv_pwd', '123456')
