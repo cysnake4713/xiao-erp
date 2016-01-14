@@ -75,7 +75,7 @@ class SaleOrder(models.Model):
                     product_id = self.env['product.product'].search([('tianv_id', '=', line['productId'])])
                     if not (product_id and len(product_id) == 1):
                         _logger.error('miss match product tianv id:%s' % line['productId'])
-                        product_name = u'产品名称无匹配'
+                        product_name = line['productName']
                         product_id = False
                         product_uom = 1
                     else:
@@ -92,7 +92,3 @@ class SaleOrder(models.Model):
                     })
                     # TODO: transfer price
         self.env['ir.config_parameter'].set_param('interface.order.last.update', fields.Datetime.now())
-
-    @api.multi
-    def button_sync_now(self):
-        self.sync_tianv_data()

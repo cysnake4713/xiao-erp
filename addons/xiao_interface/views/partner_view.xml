@@ -12,7 +12,6 @@
                             <field name="tianv_id"/>
                             <field name="industry" attrs="{'invisible':[('is_company','=',False)]}"/>
                             <field name="company_type" attrs="{'invisible':[('is_company','=',False)]}"/>
-                            <button name="button_sync_now" type="object" string="立刻同步"/>
                         </group>
                     </page>
                 </page>

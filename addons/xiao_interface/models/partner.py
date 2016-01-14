@@ -22,7 +22,7 @@ class ResPartner(models.Model):
         if last_update == 'False':
             remote_result = client.GetUserIds()
         else:
-            remote_result = client.GetOrderIds(updateTime=last_update)
+            remote_result = client.GetUserIds(UpdateTime=last_update)
 
         # sync company
         for remote_company_id in remote_result['company']:
@@ -81,18 +81,3 @@ class ResPartner(models.Model):
                     'parent_id': parent_id,
                 })
         self.env['ir.config_parameter'].set_param('interface.partner.last.update', fields.Datetime.now())
-
-    @api.multi
-    def button_sync_now(self):
-        self.sync_tianv_data()
-
-    @api.model
-    def cron_sync(self):
-        try:
-            self.env.cr.execute('SAVEPOINT sync_partners')
-            self.sync_tianv_data()
-        except Exception, e:
-            self.env['interface.sync.log'].create({'name': str(e)})
-            self.env.cr.execute('ROLLBACK TO SAVEPOINT sync_partners')
-        self.env.cr.execute('RELEASE SAVEPOINT sync_partners')
-        return True

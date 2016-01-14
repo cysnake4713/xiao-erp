@@ -35,6 +35,21 @@ class PartnerConfig(models.TransientModel):
         self.env['ir.config_parameter'].set_param('interface.partner.company.default', str(self.partner_company_default.id))
         self.env['ir.config_parameter'].set_param('interface.warehouse.company.default', str(self.partner_warehouse_default.id))
 
-# @api.multi
-# def button_backup_db(self):
-#     return self.env['interface.config.settings'].cron_backup_db()
+    @api.multi
+    def button_sync_partner(self):
+        self.env['res.partner'].sync_tianv_data()
+
+    @api.multi
+    def button_sync_order(self):
+        self.env['sale.order'].sync_tianv_data()
+
+    @api.model
+    def cron_sync(self):
+        try:
+            self.env.cr.execute('SAVEPOINT sync_partners')
+            self.env['res.partner'].sync_tianv_data()
+            self.env['sale.order'].sync_tianv_data()
+        except Exception, e:
+            self.env['interface.sync.log'].create({'name': str(e)})
+            self.env.cr.execute('ROLLBACK TO SAVEPOINT sync_partners')
+        self.env.cr.execute('RELEASE SAVEPOINT sync_partners')

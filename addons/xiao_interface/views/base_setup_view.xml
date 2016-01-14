@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-        <!-- Inherit Form View to Modify it -->
         <record id="view_interface_configuration" model="ir.ui.view">
             <field name="name">view.interface.config.settings.form</field>
             <field name="model">interface.config.settings</field>
@@ -16,10 +15,29 @@
                         <field name="product_type_default"/>
                     </group>
                     <group string="用户同步">
+                        <button name="button_sync_partner" type="object" string="立刻同步"/>
+                        <newline/>
                         <field name="partner_company_default"/>
                         <field name="partner_warehouse_default"/>
                     </group>
+                    <group string="订单同步">
+                        <button name="button_sync_order" type="object" string="立刻同步"/>
+                        <newline/>
+                    </group>
                 </form>
+            </field>
+        </record>
+
+        <record id="view_interface_sync_log_tree" model="ir.ui.view">
+            <field name="name">view.interface.sync.log.tree</field>
+            <field name="model">interface.sync.log</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="log_datetime"/>
+                    <field name="model"/>
+                    <field name="type"/>
+                    <field name="name"/>
+                </tree>
             </field>
         </record>
     </data>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data noupdate="1">
-        <record model="ir.cron" id="cron_partner_sync">
-            <field name="name">partner sync cron</field>
+        <record model="ir.cron" id="cron_tianv_sync">
+            <field name="name">tianv sync cron</field>
             <field name="interval_number">1</field>
             <field name="interval_type">minutes</field>
             <field name="numbercall">-1</field>
             <field name="doall" eval="False"/>
-            <field name="model" eval="'res.partner'"/>
+            <field name="model" eval="'interface.config.settings'"/>
             <field name="function" eval="'cron_sync'"/>
             <field name="args" eval="'()'"/>
         </record>

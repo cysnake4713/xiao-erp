@@ -36,4 +36,6 @@ class SyncLog(models.Model):
     _description = 'Sync Log'
 
     log_datetime = fields.Datetime('Log Datetime', default=lambda obj: fields.Datetime.now())
+    model = fields.Char('Model')
+    type = fields.Char('Status')
     name = fields.Char('Info')
