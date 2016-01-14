@@ -22,7 +22,7 @@ class TianvSyncGoldTest(unittest.TestCase):
         self.assertIsInstance(result, dict)
 
     def test_get_gold_by_id(self):
-        result = self.client.GetUserGoldIds(id=3)
+        result = self.client.GetUserGoldById(id=3)
         print result
         self.assertIsInstance(result, dict)
 
