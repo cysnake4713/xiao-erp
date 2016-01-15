@@ -24,6 +24,10 @@
                         <button name="button_sync_order" type="object" string="立刻同步"/>
                         <newline/>
                     </group>
+                    <group string="付款信息同步">
+
+                        <button name="button_sync_payment" type="object" string="立刻同步"/>
+                    </group>
                 </form>
             </field>
         </record>

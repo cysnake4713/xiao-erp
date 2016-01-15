@@ -43,6 +43,10 @@ class PartnerConfig(models.TransientModel):
     def button_sync_order(self):
         self.env['sale.order'].sync_tianv_data()
 
+    @api.multi
+    def button_sync_payment(self):
+        self.env['xiao.website.pay.log'].sync_tianv_data()
+
     @api.model
     def cron_sync(self):
         try:
