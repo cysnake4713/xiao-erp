@@ -6,10 +6,12 @@
             <field name="model">xiao.website.pay.log</field>
             <field name="arch" type="xml">
                 <tree editable="top">
-                    <field name="order_id"/>
-                    <field name="price"/>
-                    <field name="name"/>
-                    <field name="pay_datetime"/>
+                    <field name="tianv_id" readonly="1"/>
+                    <field name="pay_datetime" readonly="1"/>
+                    <field name="price" readonly="1"/>
+                    <field name="related_order_ids" readonly="1" widget="many2many_tags"/>
+                    <field name="closed_order_ids" readonly="1" widget="many2many_tags"/>
+                    <field name="is_reconciled"/>
                 </tree>
             </field>
         </record>
