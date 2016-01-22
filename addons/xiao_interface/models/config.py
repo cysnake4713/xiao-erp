@@ -18,6 +18,10 @@ class PartnerConfig(models.TransientModel):
 
     partner_warehouse_default = fields.Many2one('stock.warehouse', 'Warehouse Default')
 
+    order_tax_default = fields.Many2one('account.tax', 'Order Account Tax')
+
+    order_delivery_default = fields.Many2one('product.product', 'Delivery Product')
+
     _defaults = {
         'partner_company_default': lambda self, cr, uid, ct: eval(
                 self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.partner.company.default', 'False', ct))
@@ -27,6 +31,10 @@ class PartnerConfig(models.TransientModel):
         ,
         'product_type_default': lambda self, cr, uid, ct: eval(
                 self.pool['ir.config_parameter'].get_param(cr, uid, 'tianv.product.type', 'False', ct)),
+        'order_tax_default': lambda self, cr, uid, ct: eval(
+                self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.order.tax.default', 'False', ct)),
+        'order_delivery_default': lambda self, cr, uid, ct: eval(
+                self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.order.delivery.default', 'False', ct)),
     }
 
     @api.multi
@@ -34,6 +42,8 @@ class PartnerConfig(models.TransientModel):
         self.env['ir.config_parameter'].set_param('tianv.product.type', str(self.product_type_default))
         self.env['ir.config_parameter'].set_param('interface.partner.company.default', str(self.partner_company_default.id))
         self.env['ir.config_parameter'].set_param('interface.warehouse.company.default', str(self.partner_warehouse_default.id))
+        self.env['ir.config_parameter'].set_param('interface.order.tax.default', str(self.order_tax_default.id))
+        self.env['ir.config_parameter'].set_param('interface.order.delivery.default', str(self.order_delivery_default.id))
 
     @api.multi
     def button_sync_partner(self):

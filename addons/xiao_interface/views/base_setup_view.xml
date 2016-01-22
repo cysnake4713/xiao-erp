@@ -23,6 +23,8 @@
                     <group string="订单同步">
                         <button name="button_sync_order" type="object" string="立刻同步"/>
                         <newline/>
+                        <field name="order_tax_default"/>
+                        <field name="order_delivery_default"/>
                     </group>
                     <group string="付款信息同步">
 
