@@ -64,6 +64,6 @@ class PartnerConfig(models.TransientModel):
             self.env['res.partner'].sync_tianv_data()
             self.env['sale.order'].sync_tianv_data()
         except Exception, e:
-            self.env['interface.sync.log'].create({'name': str(e)})
+            self.env['interface.sync.log'].error('sync.cron', str(e))
             self.env.cr.execute('ROLLBACK TO SAVEPOINT sync_partners')
         self.env.cr.execute('RELEASE SAVEPOINT sync_partners')

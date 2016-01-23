@@ -26,6 +26,7 @@ class SaleOrder(models.Model):
 
     @api.model
     def sync_tianv_data(self):
+        logger = self.env['interface.sync.log']
         is_miss_info = False
         param_obj = self.env['ir.config_parameter']
         last_update = param_obj.get_param('interface.order.last.update', 'False')
@@ -35,13 +36,15 @@ class SaleOrder(models.Model):
             order_ids = client.GetOrderIds(updateTime=last_update)['ids']
         for tianv_id in order_ids:
             tianv_values = client.GetOrderById(id=tianv_id)
+            logger.info('sale.order', str(tianv_values))
             order_id = self.search([('tianv_id', '=', tianv_id)])
+            log_partner_info = False
             if not order_id:
                 partner_id = self.env['res.partner'].search([('is_company', '=', False), ('tianv_id', '=', tianv_values['userId'])])
                 if not (partner_id and len(partner_id) == 1):
                     log_partner_info = 'miss match partner tianv id:%s' % tianv_values['userId']
                     _logger.error(log_partner_info)
-                    order_id.message_post(body=log_partner_info)
+                    logger.error('sale.order.partner', log_partner_info)
                     partner_id = eval(param_obj.get_param('interface.partner.company.default', 'False'))
                     is_miss_info = True
                 else:
@@ -62,13 +65,15 @@ class SaleOrder(models.Model):
                     # 'state': tianv_values['state'],
 
                 })
-                order_id.message_post(body=log_partner_info)
+                if log_partner_info:
+                    order_id.message_post(body=log_partner_info)
                 tax_id = eval(param_obj.get_param('interface.order.tax.default', 'False'))
                 for line in tianv_values['orderLines']:
                     product_id = self.env['product.product'].search([('tianv_id', '=', line['productId'])])
                     if not (product_id and len(product_id) == 1):
                         log_info = 'miss match product tianv id:%s' % line['productId']
                         _logger.error(log_info)
+                        logger.error('sale.order.product', log_info)
                         order_id.message_post(body=log_info)
                         is_miss_info = True
                         product_name = line['productName']

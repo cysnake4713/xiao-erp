@@ -34,8 +34,25 @@ class SyncLog(models.Model):
     _name = 'interface.sync.log'
     _rec_name = 'name'
     _description = 'Sync Log'
+    _order = 'log_datetime desc'
 
     log_datetime = fields.Datetime('Log Datetime', default=lambda obj: fields.Datetime.now())
     model = fields.Char('Model')
     type = fields.Char('Status')
     name = fields.Char('Info')
+
+    @api.model
+    def info(self, model, name):
+        self.create({
+            'model': model,
+            'type': 'info',
+            'name': name,
+        })
+
+    @api.model
+    def error(self, model, name):
+        self.create({
+            'model': model,
+            'type': 'error',
+            'name': name,
+        })
