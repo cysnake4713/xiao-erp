@@ -9,9 +9,10 @@
 Xiao Interface""",
     'author': 'Matt Cai',
     'website': 'http://odoosoft.com',
-    'depends': ['base', 'product', 'sale', 'xiao_website_pay'],
+    'depends': ['base', 'product', 'sale', 'xiao_website_pay', 'stock'],
     'data': [
         'security/ir.model.access.csv',
+        'views/stock_view.xml',
         'views/sale_view.xml',
         'views/menu.xml',
         'views/tianv_product_map.xml',

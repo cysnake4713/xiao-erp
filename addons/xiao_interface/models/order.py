@@ -57,6 +57,7 @@ class SaleOrder(models.Model):
                     'delivery_phone': tianv_values['phone'],
                     'pay_method': tianv_values['payMethod'],
                     'tianv_order_date': fields.Datetime.to_string(fields.Datetime.from_string(tianv_values['date'])),
+                    'date_order': fields.Datetime.to_string(fields.Datetime.from_string(tianv_values['date'])),
                     'deliveryPrice': tianv_values['deliveryPrice'],
                     'invoice_type': tianv_values['invoiceType'],
                     'tianv_state': tianv_values['state'],
@@ -105,5 +106,17 @@ class SaleOrder(models.Model):
                     })
                 if not is_miss_info:
                     order_id.action_button_confirm()
-                    # todo: need add address in picking and update tianv stock number
+                    # todo:update tianv stock number
+
         param_obj.set_param('interface.order.last.update', fields.Datetime.now())
+
+    @api.multi
+    def action_button_confirm(self):
+        result = super(SaleOrder, self).action_button_confirm()
+        self.picking_ids.write({
+            'delivery_address': self.delivery_address,
+            'delivery_name': self.delivery_name,
+            'delivery_phone': self.delivery_phone,
+            'deliveryPrice': self.deliveryPrice,
+        })
+        return result
