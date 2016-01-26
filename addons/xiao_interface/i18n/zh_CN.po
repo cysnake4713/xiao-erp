@@ -1,0 +1,241 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* xiao_interface
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-01-26 03:35+0000\n"
+"PO-Revision-Date: 2016-01-26 03:35+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: xiao_interface
+#: field:res.partner,company_type:0
+msgid "Company Type"
+msgstr "公司类型"
+
+#. module: xiao_interface
+#: field:interface.config.settings,create_uid:0
+#: field:interface.sync.log,create_uid:0
+msgid "Created by"
+msgstr "创建人"
+
+#. module: xiao_interface
+#: field:interface.config.settings,create_date:0
+#: field:interface.sync.log,create_date:0
+msgid "Created on"
+msgstr "创建时间"
+
+#. module: xiao_interface
+#: field:sale.order,delivery_address:0
+#: field:stock.picking,delivery_address:0
+msgid "Delivery Address"
+msgstr "收货地址"
+
+#. module: xiao_interface
+#: field:sale.order,delivery_name:0
+#: field:stock.picking,delivery_name:0
+msgid "Delivery Name"
+msgstr "收货人"
+
+#. module: xiao_interface
+#: field:sale.order,delivery_phone:0
+#: field:stock.picking,delivery_phone:0
+msgid "Delivery Phone"
+msgstr "收货电话"
+
+#. module: xiao_interface
+#: field:sale.order,deliveryPrice:0
+#: field:stock.picking,deliveryPrice:0
+msgid "Delivery Price"
+msgstr "快递运费"
+
+#. module: xiao_interface
+#: field:interface.config.settings,order_delivery_default:0
+msgid "Delivery Product"
+msgstr "内部用快递产品"
+
+#. module: xiao_interface
+#: field:interface.config.settings,id:0
+#: field:interface.interface,id:0
+#: field:interface.sync.log,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: xiao_interface
+#: field:res.partner,industry:0
+msgid "Industry"
+msgstr "行业"
+
+#. module: xiao_interface
+#: field:interface.sync.log,name:0
+msgid "Info"
+msgstr "信息"
+
+#. module: xiao_interface
+#: field:sale.order,invoice_type:0
+msgid "Invoice Type"
+msgstr "发票类型"
+
+#. module: xiao_interface
+#: field:interface.config.settings,write_uid:0
+#: field:interface.sync.log,write_uid:0
+msgid "Last Updated by"
+msgstr "Last Updated by"
+
+#. module: xiao_interface
+#: field:interface.config.settings,write_date:0
+#: field:interface.sync.log,write_date:0
+msgid "Last Updated on"
+msgstr "Last Updated on"
+
+#. module: xiao_interface
+#: field:interface.sync.log,log_datetime:0
+msgid "Log Datetime"
+msgstr "时间"
+
+#. module: xiao_interface
+#: field:interface.sync.log,model:0
+msgid "Model"
+msgstr "类型"
+
+#. module: xiao_interface
+#: field:interface.config.settings,order_tax_default:0
+msgid "Order Account Tax"
+msgstr "默认税率"
+
+#. module: xiao_interface
+#: model:ir.model,name:xiao_interface.model_res_partner
+msgid "Partner"
+msgstr "业务伙伴"
+
+#. module: xiao_interface
+#: field:interface.config.settings,partner_company_default:0
+msgid "Partner Company Default"
+msgstr "默认公司"
+
+#. module: xiao_interface
+#: field:sale.order,pay_method:0
+msgid "Pay Method"
+msgstr "付款方式"
+
+#. module: xiao_interface
+#: model:ir.model,name:xiao_interface.model_stock_picking
+msgid "Picking List"
+msgstr "分拣清单"
+
+#. module: xiao_interface
+#: model:ir.model,name:xiao_interface.model_product_template
+msgid "Product Template"
+msgstr "产品模板"
+
+#. module: xiao_interface
+#: model:ir.model,name:xiao_interface.model_sale_order
+msgid "Sales Order"
+msgstr "销售订单"
+
+#. module: xiao_interface
+#: field:interface.sync.log,type:0
+msgid "Status"
+msgstr "状态"
+
+#. module: xiao_interface
+#: model:ir.model,name:xiao_interface.model_interface_sync_log
+msgid "Sync Log"
+msgstr "同步记录"
+
+#. module: xiao_interface
+#: field:res.partner,tianv_id:0
+#: field:sale.order,tianv_id:0
+msgid "Tianv ID"
+msgstr "Tianv ID"
+
+#. module: xiao_interface
+#: field:sale.order,tianv_order_date:0
+msgid "Tianv Order Date"
+msgstr "天艺网站下单时间"
+
+#. module: xiao_interface
+#: field:interface.config.settings,product_type_default:0
+msgid "Tianv Product Type default"
+msgstr "产品默认类型"
+
+#. module: xiao_interface
+#: field:sale.order,tianv_state:0
+msgid "Tianv State"
+msgstr "网站订单状态"
+
+#. module: xiao_interface
+#: field:interface.config.settings,partner_warehouse_default:0
+msgid "Warehouse Default"
+msgstr "默认仓库"
+
+#. module: xiao_interface
+#: model:ir.model,name:xiao_interface.model_xiao_website_pay_log
+msgid "Xiao Website Pay Log"
+msgstr "网站付款记录"
+
+#. module: xiao_interface
+#: view:interface.config.settings:xiao_interface.view_interface_configuration
+msgid "or"
+msgstr "或"
+
+#. module: xiao_interface
+#: view:interface.config.settings:xiao_interface.view_interface_configuration
+msgid "产品同步"
+msgstr "产品同步"
+
+#. module: xiao_interface
+#: view:interface.config.settings:xiao_interface.view_interface_configuration
+msgid "付款信息同步"
+msgstr "付款信息同步"
+
+#. module: xiao_interface
+#: model:ir.actions.act_window,name:xiao_interface.action_product_tianv_map
+#: model:ir.ui.menu,name:xiao_interface.menu_prodcut_value_map
+msgid "天艺网络产品数据对应表"
+msgstr "天艺网络产品数据对应表"
+
+#. module: xiao_interface
+#: model:ir.actions.act_window,name:xiao_interface.action_interface_configuration
+#: model:ir.ui.menu,name:xiao_interface.menu_interface_configuration
+msgid "接口设置"
+msgstr "接口设置"
+
+#. module: xiao_interface
+#: model:ir.actions.act_window,name:xiao_interface.action_interface_log
+#: model:ir.ui.menu,name:xiao_interface.menu_interface_log
+msgid "接口调用记录"
+msgstr "接口调用记录"
+
+#. module: xiao_interface
+#: view:interface.config.settings:xiao_interface.view_interface_configuration
+msgid "用户同步"
+msgstr "用户同步"
+
+#. module: xiao_interface
+#: view:interface.config.settings:xiao_interface.view_interface_configuration
+msgid "立刻同步"
+msgstr "立刻同步"
+
+#. module: xiao_interface
+#: view:res.partner:xiao_interface.view_res_partner_inherit_form
+msgid "网站关联账户"
+msgstr "网站关联账户"
+
+#. module: xiao_interface
+#: view:interface.config.settings:xiao_interface.view_interface_configuration
+msgid "订单同步"
+msgstr "订单同步"
+
+#. module: xiao_interface
+#: view:product.template:xiao_interface.product_template_form_inherit_view
+msgid "远程同步"
+msgstr "远程同步"
+
