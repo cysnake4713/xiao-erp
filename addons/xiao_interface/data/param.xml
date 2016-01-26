@@ -5,6 +5,10 @@
             <field name="key">tianv.product.type</field>
             <field name="value">1131</field>
         </record>
+        <record id="param_tianv_product_type_parent" model="ir.config_parameter">
+            <field name="key">tianv.product.type.parent</field>
+            <field name="value">444</field>
+        </record>
         <record id="param_tianv_company_default" model="ir.config_parameter">
             <field name="key">interface.partner.company.default</field>
             <field name="value">1</field>
@@ -15,6 +19,10 @@
         </record>
         <record id="param_tianv_tax_default" model="ir.config_parameter">
             <field name="key">interface.order.tax.default</field>
+            <field name="value">False</field>
+        </record>
+        <record id="param_tianv_order_user_default" model="ir.config_parameter">
+            <field name="key">interface.order.user.default</field>
             <field name="value">False</field>
         </record>
         <record id="param_tianv_delivery_default" model="ir.config_parameter">

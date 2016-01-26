@@ -11,8 +11,10 @@ class PartnerConfig(models.TransientModel):
     _name = 'interface.config.settings'
     _inherit = 'res.config.settings'
 
-    # product
+    # product type
     product_type_default = fields.Char('Tianv Product Type default')
+    # product type parent
+    product_type_parent_default = fields.Char('Tianv Product Parent Type default')
     # partner
     partner_company_default = fields.Many2one('res.company', 'Partner Company Default')
 
@@ -21,29 +23,35 @@ class PartnerConfig(models.TransientModel):
     order_tax_default = fields.Many2one('account.tax', 'Order Account Tax')
 
     order_delivery_default = fields.Many2one('product.product', 'Delivery Product')
+    # order sale man
+    order_user_default = fields.Many2one('res.users', 'Order Default User')
 
     _defaults = {
         'partner_company_default': lambda self, cr, uid, ct: eval(
-                self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.partner.company.default', 'False', ct))
-        ,
+                self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.partner.company.default', 'False', ct)),
         'partner_warehouse_default': lambda self, cr, uid, ct: eval(
-                self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.warehouse.company.default', 'False', ct))
-        ,
+                self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.warehouse.company.default', 'False', ct)),
         'product_type_default': lambda self, cr, uid, ct: eval(
                 self.pool['ir.config_parameter'].get_param(cr, uid, 'tianv.product.type', 'False', ct)),
+        'product_type_parent_default': lambda self, cr, uid, ct: eval(
+                self.pool['ir.config_parameter'].get_param(cr, uid, 'tianv.product.type.parent', 'False', ct)),
         'order_tax_default': lambda self, cr, uid, ct: eval(
                 self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.order.tax.default', 'False', ct)),
         'order_delivery_default': lambda self, cr, uid, ct: eval(
                 self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.order.delivery.default', 'False', ct)),
+        'order_user_default': lambda self, cr, uid, ct: eval(
+                self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.order.user.default', 'False', ct)),
     }
 
     @api.multi
     def set_default_info(self):
         self.env['ir.config_parameter'].set_param('tianv.product.type', str(self.product_type_default))
+        self.env['ir.config_parameter'].set_param('tianv.product.parent.type', str(self.product_type_parent_default))
         self.env['ir.config_parameter'].set_param('interface.partner.company.default', str(self.partner_company_default.id))
         self.env['ir.config_parameter'].set_param('interface.warehouse.company.default', str(self.partner_warehouse_default.id))
         self.env['ir.config_parameter'].set_param('interface.order.tax.default', str(self.order_tax_default.id))
         self.env['ir.config_parameter'].set_param('interface.order.delivery.default', str(self.order_delivery_default.id))
+        self.env['ir.config_parameter'].set_param('interface.order.user.default', str(self.order_user_default.id))
 
     @api.multi
     def button_sync_partner(self):

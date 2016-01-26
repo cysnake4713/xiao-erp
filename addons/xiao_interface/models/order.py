@@ -63,6 +63,7 @@ class SaleOrder(models.Model):
                     'tianv_state': tianv_values['state'],
                     'company_id': eval(param_obj.get_param('interface.partner.company.default', 'False')),
                     'warehouse_id': eval(param_obj.get_param('interface.warehouse.company.default', 'False')),
+                    'user_id': eval(param_obj.get_param('interface.order.user.default', 'False')),
                     # 'state': tianv_values['state'],
 
                 })
@@ -70,6 +71,7 @@ class SaleOrder(models.Model):
                     order_id.message_post(body=log_partner_info)
                 tax_id = eval(param_obj.get_param('interface.order.tax.default', 'False'))
                 for line in tianv_values['orderLines']:
+                    # product_id = self.env['product.template.tianv.value'].get_product_id(line['productId'])
                     product_id = self.env['product.product'].search([('tianv_id', '=', line['productId'])])
                     if not (product_id and len(product_id) == 1):
                         log_info = 'miss match product tianv id:%s' % line['productId']
@@ -82,8 +84,8 @@ class SaleOrder(models.Model):
                         product_uom = 1
                     else:
                         product_name = product_id.name
-                        product_id = product_id.id
                         product_uom = product_id.uom_id.id
+                        product_id = product_id.id
                     self.env['sale.order.line'].create({
                         'order_id': order_id.id,
                         'product_id': product_id,

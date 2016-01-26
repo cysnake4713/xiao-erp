@@ -13,6 +13,7 @@
                     </header>
                     <group string="产品同步">
                         <field name="product_type_default"/>
+                        <field name="product_type_parent_default"/>
                     </group>
                     <group string="用户同步">
                         <button name="button_sync_partner" type="object" string="立刻同步"/>
@@ -25,6 +26,7 @@
                         <newline/>
                         <field name="order_tax_default"/>
                         <field name="order_delivery_default"/>
+                        <field name="order_user_default"/>
                     </group>
                     <group string="付款信息同步">
 

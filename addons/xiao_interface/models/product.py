@@ -35,6 +35,7 @@ class ProductTemplate(models.Model):
                     "Title": template.name,
                     "Price": 0,
                     "TypeId": int(self.env['ir.config_parameter'].get_param('tianv.product.type')),
+                    "ParentId": int(self.env['ir.config_parameter'].get_param('tianv.product.type.parent')),
                     'Attribute_infos': [],
                     'Product_Number_Infos': [],
                     "ProductType": u"实物产品",
@@ -118,3 +119,11 @@ class ProductAttrLineValue(models.Model):
             'val_id': val_id,
             'tianv_id': tianv_id,
         })
+
+    @api.model
+    def get_product_id(self, tianv_id):
+        tianv_values = self.search([('tianv_id', '=', tianv_id)])
+        if tianv_values:
+            return self.env['product.product'].search(
+                    [('product_tmpl_id', '=', tianv_values[0].template_id.id), ('attribute_value_ids', '=', tianv_values[0].val_id.id)])
+        return False
