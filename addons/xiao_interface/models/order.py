@@ -71,15 +71,18 @@ class SaleOrder(models.Model):
                     order_id.message_post(body=log_partner_info)
                 tax_id = eval(param_obj.get_param('interface.order.tax.default', 'False'))
                 for line in tianv_values['orderLines']:
-                    # product_id = self.env['product.template.tianv.value'].get_product_id(line['productId'])
-                    product_id = self.env['product.product'].search([('tianv_id', '=', line['productId'])])
+                    # get local param id by tianv name, this shit code is because Mr.Shen's code is one fucking huge hole.
+                    tianv_product_names = [p['PamName'] for p in line['ParNames']]
+                    product_values_ids = self.env['product.attribute.value'].search([('name', 'in', tianv_product_names)])
+                    product_id = self.env['product.product'].search(
+                            [('tianv_id', '=', line['productId']), ('attribute_value_ids', 'in', [v.id for v in product_values_ids])])
                     if not (product_id and len(product_id) == 1):
                         log_info = 'miss match product tianv id:%s' % line['productId']
                         _logger.error(log_info)
                         logger.error('sale.order.product', log_info)
                         order_id.message_post(body=log_info)
                         is_miss_info = True
-                        product_name = line['productName']
+                        product_name = line['productName'] + (' ' + ','.join(tianv_product_names) if tianv_product_names else '')
                         product_id = False
                         product_uom = 1
                     else:
@@ -95,17 +98,17 @@ class SaleOrder(models.Model):
                         'product_uom': product_uom,
                         'tax_id': [(6, 0, [tax_id])] if tianv_values['invoiceType'] not in [u'无需发票'] else False,
                     })
-                    # add delivery price
-                    delivery_id = eval(param_obj.get_param('interface.order.delivery.default', 'False'))
-                    self.env['sale.order.line'].create({
-                        'order_id': order_id.id,
-                        'product_id': delivery_id,
-                        'name': u'运费',
-                        'product_uom_qty': 1,
-                        'price_unit': tianv_values['deliveryPrice'],
-                        'product_uom': 1,
-                        # 'tax_id': [(6, 0, [tax_id])] if tianv_values['invoiceType'] not in [u'无需发票'] else False,
-                    })
+                # add delivery price
+                delivery_id = eval(param_obj.get_param('interface.order.delivery.default', 'False'))
+                self.env['sale.order.line'].create({
+                    'order_id': order_id.id,
+                    'product_id': delivery_id,
+                    'name': u'运费',
+                    'product_uom_qty': 1,
+                    'price_unit': tianv_values['deliveryPrice'],
+                    'product_uom': 1,
+                    # 'tax_id': [(6, 0, [tax_id])] if tianv_values['invoiceType'] not in [u'无需发票'] else False,
+                })
                 if not is_miss_info:
                     order_id.action_button_confirm()
                     # todo:update tianv stock number
