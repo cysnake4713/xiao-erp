@@ -6,6 +6,8 @@
             <field name="model">xiao.website.pay.log</field>
             <field name="arch" type="xml">
                 <tree editable="top">
+                    <field name="name" readonly="1"/>
+                    <field name="state" readonly="1"/>
                     <field name="tianv_id" readonly="1"/>
                     <field name="pay_datetime" readonly="1"/>
                     <field name="price" readonly="1"/>
