@@ -27,6 +27,8 @@ class WebsitePayLog(models.Model):
             # if exist
             if log_id:
                 log_id.update({
+                    'name': tianv_values['GoldNo'],
+                    'state': tianv_values['state'],
                     'tianv_id': tianv_id,
                     'related_order_ids': [(6, 0,
                                            [o.id for o in self.env['sale.order'].search([('tianv_id', 'in', tianv_values['orderIds'])])]
@@ -39,6 +41,8 @@ class WebsitePayLog(models.Model):
                 })
             else:
                 self.create({
+                    'name': tianv_values['GoldNo'],
+                    'state': tianv_values['state'],
                     'tianv_id': tianv_id,
                     'related_order_ids': [(6, 0,
                                            [o.id for o in self.env['sale.order'].search([('tianv_id', 'in', tianv_values['orderIds'])])]
@@ -49,4 +53,4 @@ class WebsitePayLog(models.Model):
                     'price': tianv_values['amount'],
                     'pay_datetime': tianv_values['date'],
                 })
-        self.env['ir.config_parameter'].set_param('interface.order.last.update', fields.Datetime.now())
+        self.env['ir.config_parameter'].set_param('interface.payment.last.update', fields.Datetime.now())

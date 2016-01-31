@@ -17,6 +17,7 @@
                     <field name="invoice_type" readonly="1"/>
                     <field name="tianv_state" readonly="1"/>
                     <field name="tianv_id"/>
+                    <field name="tianv_order_no" readonly="1"/>
                 </field>
             </field>
         </record>

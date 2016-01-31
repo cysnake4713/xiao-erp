@@ -14,6 +14,7 @@ _logger = logging.getLogger(__name__)
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
+    tianv_order_no = fields.Char('Tianv Order No.')
     tianv_id = fields.Integer('Tianv ID')
     delivery_address = fields.Char('Delivery Address')
     delivery_name = fields.Char('Delivery Name')
@@ -50,14 +51,15 @@ class SaleOrder(models.Model):
                 else:
                     partner_id = partner_id.id
                 order_id = self.create({
+                    'tianv_order_no': tianv_values['OrderId'],
                     'tianv_id': tianv_id,
                     'partner_id': partner_id,
                     'delivery_address': tianv_values['address'],
                     'delivery_name': tianv_values['name'],
                     'delivery_phone': tianv_values['phone'],
                     'pay_method': tianv_values['payMethod'],
-                    'tianv_order_date': fields.Datetime.to_string(fields.Datetime.from_string(tianv_values['date'])),
-                    'date_order': fields.Datetime.to_string(fields.Datetime.from_string(tianv_values['date'])),
+                    'tianv_order_date': tianv_values['date'],  # fields.Datetime.to_string(fields.Datetime.from_string(tianv_values['date'])),
+                    'date_order': tianv_values['date'],  # fields.Datetime.to_string(fields.Datetime.from_string(tianv_values['date'])),
                     'deliveryPrice': tianv_values['deliveryPrice'],
                     'invoice_type': tianv_values['invoiceType'],
                     'tianv_state': tianv_values['state'],
@@ -75,7 +77,7 @@ class SaleOrder(models.Model):
                     tianv_product_names = [p['PamName'] for p in line['ParNames']]
                     product_values_ids = self.env['product.attribute.value'].search([('name', 'in', tianv_product_names)])
                     product_id = self.env['product.product'].search(
-                            [('tianv_id', '=', line['productId']), ('attribute_value_ids', 'in', [v.id for v in product_values_ids])])
+                        [('tianv_id', '=', line['productId']), ('attribute_value_ids', 'in', [v.id for v in product_values_ids])])
                     if not (product_id and len(product_id) == 1):
                         log_info = 'miss match product tianv id:%s' % line['productId']
                         _logger.error(log_info)
