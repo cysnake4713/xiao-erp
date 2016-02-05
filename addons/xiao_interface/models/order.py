@@ -77,7 +77,7 @@ class SaleOrder(models.Model):
                     tianv_product_names = [p['PamName'] for p in line['ParNames']]
                     product_values_ids = self.env['product.attribute.value'].search([('name', 'in', tianv_product_names)])
                     product_id = self.env['product.product'].search(
-                        [('tianv_id', '=', line['productId']), ('attribute_value_ids', 'in', [v.id for v in product_values_ids])])
+                        [('tianv_obj_id', '=', line['productId']), ('attribute_value_ids', 'in', [v.id for v in product_values_ids])])
                     if not (product_id and len(product_id) == 1):
                         log_info = 'miss match product tianv id:%s' % line['productId']
                         _logger.error(log_info)

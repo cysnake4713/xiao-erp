@@ -13,6 +13,7 @@ class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
     tianv_id = fields.Integer('Tianv ID')
+    tianv_obj_id = fields.Integer('Tianv Obj ID')
 
     @api.multi
     def create_and_update_template(self):
@@ -22,6 +23,9 @@ class ProductTemplate(models.Model):
             # update
             if template.tianv_id:
                 product_value = client.GetProduct(id=template.tianv_id)
+                self.write({
+                    'tianv_obj_id': product_value['Obj_infoId']
+                })
                 product_value.update({
                     "Title": template.name,
                     'Attribute_infos': [],
@@ -67,7 +71,10 @@ class ProductTemplate(models.Model):
                                                  } for v in l.value_ids],
                             } for l in template.attribute_line_ids]
             client.sync_product_param(product_id=template.tianv_id, json=json.dumps(param_value))
-            result = client.GetProduct(id=template.tianv_id)['Attribute_infos']
+            product_info = client.GetProduct(id=template.tianv_id)
+            # why we store this fucking value? because The donkey -> Shen is fucking mother fucker asshole.
+            template.tianv_obj_id = product_info['Obj_infoId']
+            result = product_info['Attribute_infos']
             # clear all value map
             tianv_value_obj.search([('template_id', '=', template.id)]).unlink()
             for attr in result:
@@ -125,5 +132,5 @@ class ProductAttrLineValue(models.Model):
         tianv_values = self.search([('tianv_id', '=', tianv_id)])
         if tianv_values:
             return self.env['product.product'].search(
-                    [('product_tmpl_id', '=', tianv_values[0].template_id.id), ('attribute_value_ids', '=', tianv_values[0].val_id.id)])
+                [('product_tmpl_id', '=', tianv_values[0].template_id.id), ('attribute_value_ids', '=', tianv_values[0].val_id.id)])
         return False

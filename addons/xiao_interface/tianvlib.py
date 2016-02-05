@@ -104,7 +104,7 @@ if __name__ == '__main__':
     local_client = Client('http://test.tianv.net/plugins/Tianv_Mall_WS/MallProductWS.asmx?wsdl')
 
     # local_client.service.DelProduct_Number(id=1, username='admin', pwd='123456')
-    print local_client.service.GetProduct(id=34, username='admin', pwd='123456')
+    print local_client.service.GetProduct(id=4, username='admin', pwd='123456')
     # local_client.service.AddOrEditProduct_Number_Info(proid=34, Product_Number_InfoJson=json.dumps([
     #     {"id": 0,
     #      "Product_Info_id": 29,
