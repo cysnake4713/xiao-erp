@@ -9,7 +9,7 @@
 Xiao Sale Update Module""",
     'author': 'Matt Cai',
     'website': 'http://odoosoft.com',
-    'depends': ['base', 'sale'],
+    'depends': ['base', 'sale', 'purchase'],
     'data': [
         # 'security/ir.model.access.csv',
 
