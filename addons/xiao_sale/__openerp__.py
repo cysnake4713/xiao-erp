@@ -15,6 +15,7 @@ Xiao Sale Update Module""",
 
         # 'views/product_template_view.xml',
         # 'views/limit_level_view.xml',
+        'views/purchase_view.xml',
         'views/partner_view.xml',
         # 'views/partner_wizard.xml',
         # 'views/menuitem.xml',

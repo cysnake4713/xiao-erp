@@ -10,6 +10,10 @@ class Purchase(osv.Model):
     _name = 'purchase.order.line'
     _inherit = 'purchase.order.line'
 
+    _columns = {
+        'purchase_show_qty': fields.float(u'对供应商采购数量'),
+    }
+
     def onchange_product_id(self, cr, uid, ids, pricelist_id, product_id, qty, uom_id,
                             partner_id, date_order=False, fiscal_position_id=False, date_planned=False,
                             name=False, price_unit=False, state='draft', context=None):
