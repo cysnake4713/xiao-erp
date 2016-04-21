@@ -28,6 +28,9 @@
                         <field name="order_delivery_default"/>
                         <field name="order_user_default"/>
                     </group>
+                    <group string="货运同步">
+                        <field name="delivery_company_code"/>
+                    </group>
                     <group string="付款信息同步">
 
                         <button name="button_sync_payment" type="object" string="立刻同步"/>

@@ -26,21 +26,25 @@ class PartnerConfig(models.TransientModel):
     # order sale man
     order_user_default = fields.Many2one('res.users', 'Order Default User')
 
+    delivery_company_code = fields.Char('Delivery Company Code')
+
     _defaults = {
         'partner_company_default': lambda self, cr, uid, ct: eval(
-                self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.partner.company.default', 'False', ct)),
+            self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.partner.company.default', 'False', ct)),
         'partner_warehouse_default': lambda self, cr, uid, ct: eval(
-                self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.warehouse.company.default', 'False', ct)),
+            self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.warehouse.company.default', 'False', ct)),
         'product_type_default': lambda self, cr, uid, ct: eval(
-                self.pool['ir.config_parameter'].get_param(cr, uid, 'tianv.product.type', 'False', ct)),
+            self.pool['ir.config_parameter'].get_param(cr, uid, 'tianv.product.type', 'False', ct)),
         'product_type_parent_default': lambda self, cr, uid, ct: eval(
-                self.pool['ir.config_parameter'].get_param(cr, uid, 'tianv.product.type.parent', 'False', ct)),
+            self.pool['ir.config_parameter'].get_param(cr, uid, 'tianv.product.type.parent', 'False', ct)),
         'order_tax_default': lambda self, cr, uid, ct: eval(
-                self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.order.tax.default', 'False', ct)),
+            self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.order.tax.default', 'False', ct)),
         'order_delivery_default': lambda self, cr, uid, ct: eval(
-                self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.order.delivery.default', 'False', ct)),
+            self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.order.delivery.default', 'False', ct)),
         'order_user_default': lambda self, cr, uid, ct: eval(
-                self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.order.user.default', 'False', ct)),
+            self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.order.user.default', 'False', ct)),
+        'delivery_company_code': lambda self, cr, uid, ct: eval(
+            self.pool['ir.config_parameter'].get_param(cr, uid, 'interface.delivery.company.code', 'False', ct)),
     }
 
     @api.multi
@@ -52,6 +56,7 @@ class PartnerConfig(models.TransientModel):
         self.env['ir.config_parameter'].set_param('interface.order.tax.default', str(self.order_tax_default.id))
         self.env['ir.config_parameter'].set_param('interface.order.delivery.default', str(self.order_delivery_default.id))
         self.env['ir.config_parameter'].set_param('interface.order.user.default', str(self.order_user_default.id))
+        self.env['ir.config_parameter'].set_param('interface.delivery.company.code', str(self.delivery_company_code))
 
     @api.multi
     def button_sync_partner(self):

@@ -11,6 +11,11 @@
                     <field name="delivery_name"/>
                     <field name="delivery_phone"/>
                     <field name="deliveryPrice"/>
+                    <field name="carrier_tracking_ref"/>
+                </field>
+
+                <field name="state" position="before">
+                    <button name="button_update_delivery" type="object" string="更新物流信息"/>
                 </field>
             </field>
         </record>

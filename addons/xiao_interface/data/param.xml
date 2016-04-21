@@ -41,5 +41,9 @@
             <field name="key">interface.payment.last.update</field>
             <field name="value">False</field>
         </record>
+        <record id="param_tianv_delivery_company_code" model="ir.config_parameter">
+            <field name="key">interface.delivery.company.code</field>
+            <field name="value">False</field>
+        </record>
     </data>
 </openerp>
