@@ -77,6 +77,18 @@
                                     <label>业务伙伴</label>
                                     <div class="ui-readonly-test" t-field="result.partner_id.name"/>
                                 </div>
+                                <div class="ui-form-item ui-form-item-show ui-border-b">
+                                    <label>收货地址</label>
+                                    <div class="ui-readonly-test" t-field="result.delivery_address"/>
+                                </div>
+                                <div class="ui-form-item ui-form-item-show ui-border-b">
+                                    <label>收货人</label>
+                                    <div class="ui-readonly-test" t-field="result.delivery_name"/>
+                                </div>
+                                <div class="ui-form-item ui-form-item-show ui-border-b">
+                                    <label>收货人电话</label>
+                                    <div class="ui-readonly-test" t-field="result.delivery_phone"/>
+                                </div>
                                 <t t-if="result.state in ['confirmed']">
                                     <div class="ui-form-item ui-form-item-l ui-border-b">
                                         <label class="ui-border-r check_state">
@@ -100,10 +112,6 @@
                                 <div class="ui-form-item ui-form-item-show ui-border-b">
                                     <label>安排日期</label>
                                     <div class="ui-readonly-test" t-field="result.min_date"/>
-                                </div>
-                                <div class="ui-form-item ui-form-item-show ui-border-b">
-                                    <label>承运方</label>
-                                    <div class="ui-readonly-test" t-field="result.carrier_id.name"/>
                                 </div>
                                 <div class="ui-form-item ui-form-item-l ui-border-b">
                                     <label class="ui-border-r scan-wechat">

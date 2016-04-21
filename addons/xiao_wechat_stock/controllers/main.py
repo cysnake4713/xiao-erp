@@ -61,6 +61,7 @@ class StockWebsite(http.Controller):
         if 'update_carrier_ref' in kw:
             try:
                 picking_obj.write(request.cr, request.uid, [int(oid)], {'carrier_tracking_ref': kw['update_carrier_ref']}, context=request.context)
+                picking_obj.button_update_delivery(request.cr, request.uid, [int(oid)], context=request.context)
             except Exception, e:
                 message += e.message
                 _logger.error('Wechat Stock State Check Error: %s', e)
